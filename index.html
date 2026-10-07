@@ -18,6 +18,63 @@
 .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#3f3a35;color:white;padding:11px 17px;border-radius:999px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:650px){.wrap{padding:0 16px}.top{height:auto;padding-top:17px;align-items:flex-start}.nav button{padding:7px 10px;font-size:11px}.brand{font-size:14px}.brand small{font-size:7px}.hero{padding-top:54px}.hero h1{font-size:46px;letter-spacing:.07em}.stage{height:57vw;min-height:190px}.card-stage{width:92vw}.card{border-radius:13px}.face{border-radius:13px}.id-badge{top:8px;left:9px;font-size:8px;padding:4px 7px}.hint{margin-top:14px;font-size:12px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{padding:6px;border-radius:12px}.tile img{border-radius:8px}.about{padding-top:55px}.about h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  .deck-stack{
+  width:min(360px,72vw);
+  aspect-ratio:2/3;
+}
+
+.card-stage{
+  width:min(360px,72vw);
+  perspective:1600px;
+}
+
+.card{
+  width:100%;
+  aspect-ratio:2/3;
+}
+
+.front img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+}
+
+.back{
+  background:#fff;
+  display:grid;
+  place-items:center;
+}
+
+.back img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+  transform:rotate(90deg);
+}
+
+.tile img{
+  width:100%;
+  aspect-ratio:2/3;
+  object-fit:contain;
+  background:#fff;
+}
+
+@media(max-width:650px){
+  .stage{
+    height:115vw;
+    min-height:420px;
+  }
+
+  .card-stage{
+    width:min(82vw,360px);
+  }
+
+  .deck-stack{
+    width:min(82vw,360px);
+  }
+}
 </style>
 </head>
 <body>
