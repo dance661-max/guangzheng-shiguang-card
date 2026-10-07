@@ -2,298 +2,269 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>光正‧拾光卡｜69道光，陪你走一段路。</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#eee8dc;
+  --paper:#f7f3eb;
+  --text:#403b35;
+  --muted:#857d72;
+  --line:rgba(64,59,53,.15);
+  --accent:#8b7865;
+}
 
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-  background:#f4efe7;
-  color:#554c43;
-  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
   overflow-x:hidden;
 }
 
+button{
+  font:inherit;
+}
+
 /* =========================
-   首頁
+   HEADER
+========================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 38px;
+  z-index:900;
+  background:rgba(238,232,220,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(64,59,53,.08);
+}
+
+.logo{
+  text-decoration:none;
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.logo-main{
+  font-size:20px;
+  letter-spacing:.12em;
+  font-weight:500;
+}
+
+.logo-en{
+  margin-top:5px;
+  font-family:Georgia,serif;
+  font-size:9px;
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+
+nav{
+  display:flex;
+  gap:30px;
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.12em;
+  transition:opacity .25s;
+}
+
+nav a:hover{
+  opacity:.55;
+}
+
+/* =========================
+   HERO
 ========================= */
 
 .hero{
   position:relative;
-  width:100%;
   height:100vh;
-  min-height:720px;
+  min-height:680px;
   overflow:hidden;
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      #fffdf9,
-      #f4efe7 60%,
-      #ebe3d8
-    );
 }
 
-.hero-content{
+.hero-title{
   position:absolute;
-  z-index:20;
-  top:5vh;
+  top:105px;
   left:50%;
   transform:translateX(-50%);
-  width:92%;
+  z-index:100;
   text-align:center;
   pointer-events:none;
+  white-space:nowrap;
 }
 
-.kicker{
+.hero-title h1{
+  margin:0;
+  font-size:clamp(25px,3vw,42px);
+  font-weight:400;
+  letter-spacing:.16em;
+}
+
+.hero-title .en{
+  margin-top:9px;
+  font-family:Georgia,serif;
   font-size:12px;
-  letter-spacing:.25em;
-  color:#9a8d80;
+  letter-spacing:.18em;
+  color:var(--muted);
 }
 
-.title{
-  margin-top:10px;
-  font-family:
-    "Noto Serif TC",
-    "Songti TC",
-    "PMingLiU",
-    serif;
-  font-size:clamp(30px,4vw,50px);
-  font-weight:500;
-  letter-spacing:.12em;
-}
-
-.subtitle{
-  margin-top:10px;
+.hero-title .tagline{
+  margin-top:15px;
   font-size:13px;
   letter-spacing:.16em;
-  color:#95897d;
+  color:#6f675d;
 }
 
-.hint{
-  margin-top:12px;
-  font-size:12px;
-  letter-spacing:.12em;
-  color:#aa9e92;
+.hero-title .tagline-en{
+  margin-top:5px;
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:.08em;
+  color:#958c80;
 }
-
 
 /* =========================
-   69 張牌扇形
+   FAN
 ========================= */
 
-.fan-area{
+.fan-stage{
   position:absolute;
   left:0;
   right:0;
-  top:18vh;
-  bottom:-3vh;
-  overflow:visible;
-}
-
-.fan{
-  position:absolute;
-  inset:0;
-  overflow:visible;
+  top:175px;
+  bottom:0;
+  overflow:hidden;
+  touch-action:none;
 }
 
 .fan-card{
   position:absolute;
-
   left:50%;
-  top:58%;
-
+  top:51%;
   width:calc(50vh * 9 / 16);
   height:50vh;
 
-  border-radius:8px;
+  transform-origin:center center;
+
+  border-radius:5px;
   overflow:hidden;
 
-  background:#eee8df;
+  background:#ddd5c8;
 
   box-shadow:
-    0 10px 25px rgba(60,50,40,.16);
+    0 12px 25px rgba(48,40,32,.16);
 
   cursor:pointer;
 
-  transform-origin:50% 92%;
-
   transition:
-    transform .28s cubic-bezier(.2,.85,.2,1),
-    box-shadow .28s,
-    filter .28s;
+    transform .32s cubic-bezier(.22,.7,.25,1),
+    box-shadow .32s ease,
+    filter .32s ease,
+    opacity .45s ease;
 
   will-change:transform;
-
   user-select:none;
+  -webkit-user-select:none;
 }
 
-.fan-card img{
-  pointer-events:none;
+.fan-card:hover{
+  box-shadow:
+    0 18px 35px rgba(48,40,32,.24);
 }
-
-
-/* 正面圖片
-   原始圖片 16:9
-   旋轉 90° → 9:16
-*/
-
-.front-img{
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:177.7778%;
-  height:auto;
-
-  max-width:none;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(90deg);
-
-  display:block;
-}
-
-
-/* =========================
-   滑鼠移上牌卡
-========================= */
 
 .fan-card.hover-lift{
-  filter:brightness(1.08);
-
+  filter:brightness(1.035);
+  z-index:700 !important;
   box-shadow:
-    0 28px 55px rgba(55,45,35,.32),
-    0 8px 18px rgba(55,45,35,.18);
-
-  z-index:9998 !important;
+    0 22px 42px rgba(48,40,32,.27);
 }
-
 
 /* =========================
-   被選取的牌
-========================= */
-
-.fan-card.is-selected{
-  z-index:9999 !important;
-  transition:none;
-}
-
-
-/* =========================
-   飛到中央的牌
-========================= */
-
-.fly-layer{
-  position:fixed;
-  inset:0;
-
-  z-index:1000;
-
-  pointer-events:none;
-
-  display:none;
-}
-
-.fly-layer.active{
-  display:block;
-}
-
-.flying-card{
-  position:fixed;
-
-  width:calc(50vh * 9 / 16);
-  height:50vh;
-
-  border-radius:9px;
-  overflow:hidden;
-
-  background:#eee8df;
-
-  box-shadow:
-    0 30px 80px rgba(55,45,36,.28),
-    0 8px 20px rgba(55,45,36,.15);
-
-  transform-origin:center;
-
-  transition:
-    left .8s cubic-bezier(.18,.86,.25,1),
-    top .8s cubic-bezier(.18,.86,.25,1),
-    width .8s cubic-bezier(.18,.86,.25,1),
-    height .8s cubic-bezier(.18,.86,.25,1);
-
-  pointer-events:auto;
-
-  cursor:pointer;
-}
-
-
-/* =========================
-   3D 翻牌
+   IMAGE CARD
 ========================= */
 
 .card-inner{
   position:absolute;
   inset:0;
+  width:100%;
+  height:100%;
 
   transform-style:preserve-3d;
-
-  transition:
-    transform .75s cubic-bezier(.2,.75,.2,1);
-}
-
-.flying-card.flipped .card-inner{
-  transform:rotateY(180deg);
 }
 
 .card-face{
   position:absolute;
   inset:0;
+  width:100%;
+  height:100%;
 
   overflow:hidden;
-
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
 
-  background:#eee8df;
+  background:#eee8dc;
 }
 
-
-/* 正面 */
+/*
+  原始圖片是 3840×2160，
+  前面需要旋轉 90 度成 9:16。
+  177.7778% 可完整保留原圖，不裁切。
+*/
 
 .card-front img{
   position:absolute;
-
   left:50%;
   top:50%;
 
   width:177.7778%;
   height:auto;
 
-  max-width:none;
-
   transform:
     translate(-50%,-50%)
     rotate(90deg);
+
+  display:block;
 }
 
-
-/* =========================
-   背面
-   注意：不旋轉
-========================= */
-
-.card-back{
-  transform:rotateY(180deg);
-}
+/*
+  背面：
+  不旋轉。
+  維持使用者確認過的 A 版本方向。
+*/
 
 .card-back img{
   position:absolute;
-
   left:50%;
   top:50%;
 
@@ -303,37 +274,143 @@ body{
   object-fit:contain;
 
   transform:translate(-50%,-50%);
+
+  display:block;
 }
 
-
 /* =========================
-   ↻ 翻牌提示
+   CENTER READING CARD
 ========================= */
 
-.flip-hint{
+.center-card{
   position:fixed;
-
-  z-index:1002;
 
   left:50%;
   top:50%;
 
-  transform:
-    translate(
-      calc(-50% + 150px),
-      calc(-50% + 220px)
-    );
+  width:calc(min(72vh, 88vw) * 9 / 16);
+  height:min(72vh, 88vw * 16 / 9);
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:5px;
+  max-height:72vh;
+  max-width:88vw;
+
+  transform:
+    translate(-50%,-50%)
+    scale(1);
 
   opacity:0;
 
   pointer-events:none;
 
-  transition:opacity .35s ease;
+  z-index:800;
+
+  border-radius:7px;
+  overflow:hidden;
+
+  background:#eee8dc;
+
+  box-shadow:
+    0 28px 70px rgba(45,38,31,.32);
+
+  transition:
+    transform .72s cubic-bezier(.16,.76,.25,1),
+    opacity .5s ease;
+
+  perspective:1600px;
+}
+
+.center-card.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.center-card.flipped .center-inner{
+  transform:rotateY(180deg);
+}
+
+.center-inner{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  transform-style:preserve-3d;
+
+  transition:
+    transform .75s cubic-bezier(.2,.72,.25,1);
+}
+
+.center-face{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  overflow:hidden;
+
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+
+  background:#eee8dc;
+}
+
+.center-front img{
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  width:177.7778%;
+  height:auto;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(90deg);
+
+  display:block;
+}
+
+.center-back img{
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+  transform:translate(-50%,-50%);
+
+  display:block;
+}
+
+/* =========================
+   FLIP HINT
+========================= */
+
+.flip-hint{
+  position:fixed;
+
+  left:50%;
+  bottom:8.5vh;
+
+  transform:translateX(-50%);
+
+  z-index:850;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  color:rgba(55,49,43,.78);
+
+  pointer-events:none;
+
+  opacity:0;
+
+  transition:opacity .45s ease;
 }
 
 .flip-hint.show{
@@ -341,121 +418,81 @@ body{
 }
 
 .flip-icon{
-  width:42px;
-  height:42px;
+  width:35px;
+  height:35px;
 
-  border:1px solid rgba(120,105,90,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
+  border:1px solid rgba(70,62,54,.25);
   border-radius:50%;
 
-  display:grid;
-  place-items:center;
+  font-size:20px;
 
-  background:rgba(250,247,241,.92);
-
-  font-size:22px;
-  color:#76695d;
-
-  animation:
-    flipSpin 2.2s ease-in-out infinite;
-
-  box-shadow:
-    0 5px 14px rgba(70,55,42,.12);
+  animation:flipSpin 2.2s ease-in-out infinite;
 }
 
 .flip-label{
-  font-size:10px;
-  letter-spacing:.14em;
-  color:#807469;
-  white-space:nowrap;
+  margin-top:7px;
+
+  font-size:11px;
+  letter-spacing:.12em;
+}
+
+.flip-label-en{
+  margin-top:3px;
+
+  font-family:Georgia,serif;
+  font-size:9px;
+  letter-spacing:.05em;
+
+  opacity:.68;
 }
 
 @keyframes flipSpin{
-
   0%,100%{
-    transform:rotate(0deg) scale(1);
+    transform:rotate(0deg);
   }
-
   45%{
-    transform:rotate(180deg) scale(1.06);
+    transform:rotate(180deg);
   }
-
-  55%{
-    transform:rotate(180deg) scale(1.06);
+  65%{
+    transform:rotate(180deg);
   }
-
 }
-
 
 /* =========================
-   中央提示
-========================= */
-
-.center-hint{
-  position:fixed;
-
-  z-index:1001;
-
-  left:50%;
-  bottom:5vh;
-
-  transform:translateX(-50%);
-
-  font-size:12px;
-  letter-spacing:.16em;
-
-  color:rgba(75,65,56,.65);
-
-  opacity:0;
-
-  transition:opacity .4s;
-
-  pointer-events:none;
-}
-
-.center-hint.show{
-  opacity:1;
-}
-
-
-/* =========================
-   再抽一張
+   DRAW AGAIN
 ========================= */
 
 .draw-again{
   position:fixed;
 
-  z-index:1002;
-
   left:50%;
-  bottom:8vh;
+  bottom:4vh;
 
   transform:translateX(-50%);
 
-  border:
-    1px solid rgba(130,110,92,.35);
+  z-index:850;
 
-  background:
-    rgba(250,247,241,.94);
+  border:0;
+  background:transparent;
 
-  color:#665b50;
-
-  padding:11px 26px;
-
-  border-radius:30px;
-
-  font-size:13px;
-  letter-spacing:.14em;
+  color:var(--text);
 
   cursor:pointer;
 
-  opacity:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 
+  opacity:0;
   pointer-events:none;
 
   transition:
-    opacity .35s,
-    transform .25s;
+    opacity .4s ease,
+    transform .3s ease;
 }
 
 .draw-again.show{
@@ -464,87 +501,148 @@ body{
 }
 
 .draw-again:hover{
-  transform:
-    translateX(-50%)
-    translateY(-2px);
+  transform:translateX(-50%) translateY(-2px);
 }
 
+.draw-icon{
+  font-size:17px;
+  margin-bottom:3px;
+}
+
+.draw-cn{
+  font-size:12px;
+  letter-spacing:.12em;
+}
+
+.draw-en{
+  margin-top:3px;
+
+  font-family:Georgia,serif;
+
+  font-size:9px;
+  letter-spacing:.06em;
+
+  color:var(--muted);
+}
 
 /* =========================
-   Gallery
+   OVERLAY
+========================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+
+  background:rgba(35,30,25,.08);
+
+  opacity:0;
+  pointer-events:none;
+
+  z-index:780;
+
+  transition:opacity .45s ease;
+}
+
+.overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* =========================
+   GALLERY
 ========================= */
 
 .section{
-  padding:100px 5vw;
-  background:#f7f3ed;
+  position:relative;
+
+  padding:120px 7vw;
+
+  background:#f4efe6;
+}
+
+.section-header{
+  max-width:1000px;
+  margin:0 auto 55px;
+  text-align:center;
 }
 
 .section-title{
-  text-align:center;
+  margin:0;
 
-  font-family:
-    "Noto Serif TC",
-    "Songti TC",
-    serif;
+  font-size:27px;
+  font-weight:400;
 
-  font-size:32px;
+  letter-spacing:.14em;
+}
 
-  font-weight:500;
+.section-en{
+  margin-top:8px;
 
-  letter-spacing:.15em;
+  font-family:Georgia,serif;
 
-  color:#554c43;
+  font-size:11px;
+  letter-spacing:.13em;
+
+  color:var(--muted);
 }
 
 .section-desc{
-  text-align:center;
-
-  margin-top:15px;
+  margin-top:18px;
 
   font-size:13px;
+  line-height:2;
 
-  letter-spacing:.1em;
+  color:#746c61;
+}
 
-  color:#968a7e;
+.section-desc-en{
+  margin-top:3px;
+
+  font-family:Georgia,serif;
+
+  font-size:10px;
+  line-height:1.7;
+
+  color:#9a9185;
 }
 
 .gallery{
-  width:100%;
-  max-width:1500px;
-
-  margin:60px auto 0;
+  max-width:1250px;
+  margin:0 auto;
 
   display:grid;
-
   grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(150px,1fr)
-    );
+    repeat(6,minmax(0,1fr));
 
-  gap:24px;
+  gap:15px;
 }
 
-.gallery-card{
+.gallery-item{
   position:relative;
 
   aspect-ratio:9/16;
 
   overflow:hidden;
 
-  border-radius:6px;
+  background:#ddd5c8;
 
-  background:#ebe5dc;
+  border-radius:3px;
+
+  cursor:pointer;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.gallery-item:hover{
+  transform:translateY(-5px);
 
   box-shadow:
-    0 6px 18px rgba(70,60,50,.1);
+    0 12px 25px rgba(45,38,31,.15);
 }
 
-.gallery-card img{
-  display:block;
-}
-
-.gallery-front{
+.gallery-item img{
   position:absolute;
 
   left:50%;
@@ -553,190 +651,355 @@ body{
   width:177.7778%;
   height:auto;
 
-  max-width:none;
-
   transform:
     translate(-50%,-50%)
     rotate(90deg);
+
+  display:block;
 }
 
-
 /* =========================
-   About
+   ABOUT
 ========================= */
 
 .about{
-  background:#eee7dd;
-
-  padding:110px 8vw;
-
-  text-align:center;
+  background:#ebe4d8;
 }
 
 .about-inner{
-  max-width:760px;
+  max-width:950px;
   margin:0 auto;
+
+  text-align:center;
 }
 
-.about p{
-  margin-top:35px;
+.about-text{
+  font-size:14px;
+  line-height:2.2;
 
-  line-height:2.1;
-
-  font-size:15px;
-
-  color:#71675d;
-
-  letter-spacing:.08em;
+  color:#625a50;
 }
 
+.about-text-en{
+  margin-top:18px;
+
+  font-family:Georgia,serif;
+
+  font-size:11px;
+  line-height:1.9;
+
+  color:#8c8377;
+}
 
 /* =========================
-   Footer
+   FOOTER
 ========================= */
 
 footer{
-  padding:40px 20px;
+  padding:45px 20px;
 
   text-align:center;
 
-  background:#e6ded3;
+  background:#e5ddd0;
 
-  color:#94877b;
+  color:#8a8175;
+}
 
+.footer-main{
   font-size:11px;
-
   letter-spacing:.12em;
 }
 
+.footer-en{
+  margin-top:7px;
+
+  font-family:Georgia,serif;
+
+  font-size:9px;
+  letter-spacing:.06em;
+}
 
 /* =========================
-   手機版
+   DESKTOP CENTRAL CARD
 ========================= */
 
-@media(max-width:700px){
+@media (min-width:769px){
+
+  .center-card{
+    width:calc(min(72vh, 82vw) * 9 / 16);
+    height:72vh;
+
+    max-height:72vh;
+    max-width:82vw;
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width:1000px){
+
+  .gallery{
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  header{
+    height:64px;
+    padding:0 18px;
+  }
+
+  .logo-main{
+    font-size:17px;
+  }
+
+  .logo-en{
+    font-size:8px;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  nav a{
+    font-size:10px;
+  }
 
   .hero{
-    min-height:680px;
+    min-height:600px;
   }
 
-  .fan-area{
-    top:20vh;
+  .hero-title{
+    top:88px;
   }
 
-  .fan-card,
-  .flying-card{
-    height:50vh;
-    width:calc(50vh * 9 / 16);
+  .hero-title h1{
+    font-size:23px;
+    letter-spacing:.12em;
+  }
+
+  .hero-title .en{
+    font-size:9px;
+  }
+
+  .hero-title .tagline{
+    font-size:10px;
+    margin-top:12px;
+  }
+
+  .hero-title .tagline-en{
+    font-size:8px;
+  }
+
+  .fan-stage{
+    top:150px;
+  }
+
+  /*
+    手機首頁牌卡略縮小，
+    讓69張牌仍能形成完整扇形。
+  */
+
+  .fan-card{
+    width:calc(43vh * 9 / 16);
+    height:43vh;
+  }
+
+  /*
+    手機中央閱讀卡：
+    76vh，但同時受寬度限制，
+    避免左右超出螢幕。
+  */
+
+  .center-card{
+    width:calc(min(76vh, 88vw) * 9 / 16);
+    height:min(76vh, 88vw * 16 / 9);
+
+    max-height:76vh;
+    max-width:88vw;
+
+    border-radius:6px;
   }
 
   .flip-hint{
-    transform:
-      translate(
-        calc(-50% + 95px),
-        calc(-50% + 220px)
-      );
+    bottom:9vh;
+  }
+
+  .draw-again{
+    bottom:3.2vh;
   }
 
   .gallery{
     grid-template-columns:
-      repeat(3,1fr);
+      repeat(3,minmax(0,1fr));
 
     gap:10px;
   }
 
   .section{
-    padding:75px 18px;
+    padding:85px 18px;
   }
 
-  .about{
-    padding:80px 25px;
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width:430px){
+
+  .hero{
+    min-height:560px;
   }
 
-  .draw-again{
-    bottom:3vh;
+  .hero-title{
+    top:82px;
+  }
+
+  .hero-title h1{
+    font-size:21px;
+  }
+
+  .hero-title .tagline{
+    font-size:9px;
+  }
+
+  .fan-card{
+    width:calc(40vh * 9 / 16);
+    height:40vh;
+  }
+
+  /*
+    小手機仍維持大閱讀卡，
+    但左右留安全邊界。
+  */
+
+  .center-card{
+    width:calc(min(76vh, 84vw) * 9 / 16);
+    height:min(76vh, 84vw * 16 / 9);
+
+    max-width:84vw;
+  }
+
+  .gallery{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
   }
 
 }
 </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
 
-<!-- =====================================
-     首頁／69張牌
-===================================== -->
+<header>
+
+  <a href="#home" class="logo">
+    <span class="logo-main">光正‧拾光卡</span>
+    <span class="logo-en">GUANG JHENG · SHIGUANG CARDS</span>
+  </a>
+
+  <nav>
+    <a href="#gallery">
+      牌卡畫廊
+      <span style="font-family:Georgia,serif;font-size:9px;">
+        Gallery
+      </span>
+    </a>
+
+    <a href="#about">
+      關於拾光卡
+      <span style="font-family:Georgia,serif;font-size:9px;">
+        About
+      </span>
+    </a>
+  </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
-  <div class="hero-content">
+  <div class="hero-title">
 
-    <div class="kicker">
-      GUANG JHENG JUNIOR HIGH SCHOOL
+    <h1>光正‧拾光卡</h1>
+
+    <div class="en">
+      GUANG JHENG · SHIGUANG CARDS
     </div>
 
-    <h1 class="title">
-      光正‧拾光卡
-    </h1>
-
-    <div class="subtitle">
+    <div class="tagline">
       69道光，陪你走一段路。
     </div>
 
-    <div class="hint">
-      點一張牌，讓它來到你面前。
+    <div class="tagline-en">
+      69 lights, walking with you along the way.
     </div>
 
   </div>
 
 
-  <div class="fan-area">
-
-    <div
-      class="fan"
-      id="fan">
-    </div>
-
-  </div>
+  <div class="fan-stage" id="fanStage"></div>
 
 </section>
 
 
-<!-- =====================================
-     飛到中央的牌
-===================================== -->
+<!-- =========================
+     OVERLAY
+========================= -->
 
-<div
-  class="fly-layer"
-  id="flyLayer">
-
-  <div
-    class="flying-card"
-    id="flyingCard">
-
-    <div class="card-inner">
-
-      <div
-        class="card-face card-front">
-
-        <img
-          id="flyingFront"
-          alt="拾光卡正面">
-
-      </div>
+<div class="overlay" id="overlay"></div>
 
 
-      <div
-        class="card-face card-back">
+<!-- =========================
+     CENTER CARD
+========================= -->
 
-        <img
-          id="flyingBack"
-          alt="拾光卡背面">
+<div class="center-card" id="centerCard">
 
-      </div>
+  <div class="center-inner" id="centerInner">
 
+    <div class="center-face center-front">
+      <img id="centerFrontImg" src="" alt="拾光卡正面">
+    </div>
+
+    <div class="center-face center-back">
+      <img id="centerBackImg" src="" alt="拾光卡背面">
     </div>
 
   </div>
@@ -744,540 +1007,616 @@ footer{
 </div>
 
 
-<!-- =====================================
-     翻牌提示
-===================================== -->
+<!-- =========================
+     FLIP HINT
+========================= -->
 
-<div
-  class="flip-hint"
-  id="flipHint">
+<div class="flip-hint" id="flipHint">
 
-  <div class="flip-icon">
-    ↻
-  </div>
+  <div class="flip-icon">↻</div>
 
   <div class="flip-label">
     點擊翻牌
   </div>
 
-</div>
-
-
-<div
-  class="center-hint"
-  id="centerHint">
-
-  點擊牌卡翻面
+  <div class="flip-label-en">
+    Tap to flip
+  </div>
 
 </div>
 
 
-<button
-  class="draw-again"
-  id="drawAgain">
+<!-- =========================
+     DRAW AGAIN
+========================= -->
 
-  再抽一張
+<button class="draw-again" id="drawAgain">
+
+  <div class="draw-icon">↻</div>
+
+  <div class="draw-cn">
+    再抽一張
+  </div>
+
+  <div class="draw-en">
+    Draw another card
+  </div>
 
 </button>
 
 
-<!-- =====================================
-     Gallery
-===================================== -->
+<!-- =========================
+     GALLERY
+========================= -->
 
-<section
-  class="section"
-  id="gallery">
+<section class="section" id="gallery">
 
-  <h2 class="section-title">
-    69張拾光
-  </h2>
+  <div class="section-header">
 
-  <p class="section-desc">
-    每一張，都是光正孩子留給校園的一道光。
-  </p>
+    <h2 class="section-title">
+      拾光畫廊
+    </h2>
 
-  <div
-    class="gallery"
-    id="galleryGrid">
+    <div class="section-en">
+      SHIGUANG GALLERY
+    </div>
+
+    <div class="section-desc">
+      69張牌卡，從校園出發，也從孩子的創意開始。
+    </div>
+
+    <div class="section-desc-en">
+      69 cards, born from our campus and created through students' imagination.
+    </div>
+
   </div>
+
+  <div class="gallery" id="galleryGrid"></div>
 
 </section>
 
 
-<!-- =====================================
-     About
-===================================== -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-<section
-  class="about"
-  id="about">
+<section class="section about" id="about">
 
   <div class="about-inner">
 
-    <h2 class="section-title">
-      關於拾光卡
-    </h2>
+    <div class="section-header">
 
-    <p>
-      這一套牌卡，從校園出發，也從孩子的創意開始。
-    </p>
+      <h2 class="section-title">
+        關於拾光卡
+      </h2>
 
-    <p>
-      光正國中學生將熟悉的校園景物與生活記憶，
-      轉化為一張張獨具特色的視覺作品。
-    </p>
+      <div class="section-en">
+        ABOUT SHIGUANG CARDS
+      </div>
 
-    <p>
-      69張牌卡，收藏的不只是影像，
-      也是青春、記憶，以及送給未來自己的話。
-    </p>
+    </div>
+
+    <div class="about-text">
+
+      這一套牌卡，從校園出發，也從孩子的創意開始。<br>
+
+      光正國中視覺藝術課程帶領學生，<br>
+      將校園景物與生活記憶融入創作，<br>
+      透過攝影與 iPad 數位繪圖，<br>
+      將熟悉的校園風景轉化為獨具特色的牌卡圖像。
+
+    </div>
+
+    <div class="about-text-en">
+
+      These cards began on our campus and grew from students' creativity.<br>
+      Through photography and digital drawing on iPad,<br>
+      familiar campus scenes were transformed into a collection of meaningful cards.
+
+    </div>
 
   </div>
 
 </section>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  光正國中 × 光正‧拾光卡
+
+  <div class="footer-main">
+    臺中市立光正國民中學
+  </div>
+
+  <div class="footer-en">
+    GUANG JHENG JUNIOR HIGH SCHOOL
+  </div>
+
 </footer>
 
 
 <script>
 
-/* =====================================
-   基本設定
-===================================== */
+/* ==========================================
+   BASIC SETTINGS
+========================================== */
 
 const TOTAL = 69;
-
-const fan =
-  document.getElementById("fan");
-
-const flyLayer =
-  document.getElementById("flyLayer");
-
-const flyingCard =
-  document.getElementById("flyingCard");
-
-const flyingFront =
-  document.getElementById("flyingFront");
-
-const flyingBack =
-  document.getElementById("flyingBack");
-
-const flipHint =
-  document.getElementById("flipHint");
-
-const centerHint =
-  document.getElementById("centerHint");
-
-const drawAgain =
-  document.getElementById("drawAgain");
-
-const galleryGrid =
-  document.getElementById("galleryGrid");
-
-
-let selectedIndex = null;
-
-let selectedFanCard = null;
-
-
-/*
-  GitHub 圖片位置
-*/
 
 const RAW =
   "https://raw.githubusercontent.com/dance661-max/guangzheng-shiguang-card/main/";
 
 
-/* =====================================
-   69張牌的扇形排列
-===================================== */
+/* ==========================================
+   DOM
+========================================== */
 
-function arrangeFan(){
+const fanStage =
+  document.getElementById("fanStage");
 
-  const cards =
-    [...document.querySelectorAll(".fan-card")];
+const centerCard =
+  document.getElementById("centerCard");
+
+const centerFrontImg =
+  document.getElementById("centerFrontImg");
+
+const centerBackImg =
+  document.getElementById("centerBackImg");
+
+const flipHint =
+  document.getElementById("flipHint");
+
+const drawAgain =
+  document.getElementById("drawAgain");
+
+const overlay =
+  document.getElementById("overlay");
+
+const galleryGrid =
+  document.getElementById("galleryGrid");
+
+
+/* ==========================================
+   STATE
+========================================== */
+
+let selectedIndex = null;
+
+let cards = [];
+
+let activeTouchCard = null;
+
+
+/* ==========================================
+   IMAGE PATH
+========================================== */
+
+function frontSrc(index){
+
+  const number =
+    index * 2 + 1;
+
+  return RAW + number + ".jpg";
+
+}
+
+function backSrc(index){
+
+  const number =
+    index * 2 + 2;
+
+  return RAW + number + ".jpg";
+
+}
+
+
+/* ==========================================
+   CREATE FAN CARDS
+========================================== */
+
+for(let i=0;i<TOTAL;i++){
+
+  const card =
+    document.createElement("div");
+
+  card.className = "fan-card";
+
+  card.dataset.index = i;
+
+  const inner =
+    document.createElement("div");
+
+  inner.className = "card-inner";
+
+
+  const front =
+    document.createElement("div");
+
+  front.className =
+    "card-face card-front";
+
+
+  const img =
+    document.createElement("img");
+
+  img.src = frontSrc(i);
+
+  img.alt = "光正拾光卡 " + (i+1);
+
+  img.draggable = false;
+
+
+  front.appendChild(img);
+
+  inner.appendChild(front);
+
+  card.appendChild(inner);
+
+  fanStage.appendChild(card);
+
+  cards.push(card);
+
+}
+
+
+/* ==========================================
+   FAN LAYOUT
+========================================== */
+
+function layoutFan(){
 
   cards.forEach((card,index)=>{
 
     const t =
       index / (TOTAL - 1);
 
-    /*
-      左右水平展開
-    */
-
     const x =
       (t - .5) * 96;
 
-
-    /*
-      中間高、左右低
-    */
-
     const arc =
       Math.pow(
-        Math.abs(t - .5) * 2,
+        Math.abs(t-.5)*2,
         2
       );
 
     const y =
       arc * 15;
 
-
-    /*
-      扇形旋轉角度
-    */
-
     const angle =
-      (t - .5) * 72;
-
-
-    /*
-      層次
-    */
+      (t-.5) * 72;
 
     const z =
       100 -
       Math.round(
-        Math.abs(t - .5) * 50
+        Math.abs(t-.5)*50
       ) +
       index;
 
-
-    card.style.zIndex = z;
-
+    const transform =
+      `translate(calc(-50% + ${x}vw),calc(-50% + ${y}vh)) rotate(${angle}deg)`;
 
     card.dataset.baseTransform =
-      `translate(
-        calc(-50% + ${x}vw),
-        calc(-50% + ${y}vh)
-      )
-      rotate(${angle}deg)`;
-
+      transform;
 
     card.style.transform =
-      card.dataset.baseTransform;
+      transform;
+
+    card.style.zIndex =
+      z;
 
   });
 
 }
 
 
-/* =====================================
-   建立69張牌
-===================================== */
+/* ==========================================
+   DESKTOP HOVER
+========================================== */
 
-function createFanCards(){
+cards.forEach(card=>{
 
-  for(
-    let i = 1;
-    i <= TOTAL;
-    i++
-  ){
+  card.addEventListener(
+    "mouseenter",
+    ()=>{
 
-    const frontNumber =
-      i * 2 - 1;
+      if(selectedIndex !== null)
+        return;
 
+      card.classList.add(
+        "hover-lift"
+      );
 
-    const card =
-      document.createElement("div");
+      card.style.transform =
+        card.dataset.baseTransform +
+        " translateY(-38px) scale(1.07)";
 
-
-    card.className =
-      "fan-card";
-
-
-    card.dataset.index =
-      i;
+    }
+  );
 
 
-    card.innerHTML = `
-      <img
-        class="front-img"
-        src="${RAW}${frontNumber}.jpg"
-        alt="拾光卡 ${i}"
-        draggable="false">
-    `;
+  card.addEventListener(
+    "mouseleave",
+    ()=>{
+
+      if(selectedIndex !== null)
+        return;
+
+      card.classList.remove(
+        "hover-lift"
+      );
+
+      card.style.transform =
+        card.dataset.baseTransform;
+
+    }
+  );
+
+});
 
 
-    /*
-      滑鼠移入：
-      明顯往上凸
-    */
+/* ==========================================
+   MOBILE / TOUCH HOVER
+========================================== */
 
-    card.addEventListener(
-      "mouseenter",
-      ()=>{
+function clearTouchHover(){
 
-        if(
-          selectedIndex !== null
-        ){
-          return;
-        }
+  cards.forEach(card=>{
 
-
-        card.classList.add(
-          "hover-lift"
-        );
-
-
-        card.style.transform =
-          `${card.dataset.baseTransform}
-           translateY(-38px)
-           scale(1.07)`;
-
-      }
+    card.classList.remove(
+      "hover-lift"
     );
 
+    if(selectedIndex === null){
 
-    /*
-      滑鼠移出
-    */
+      card.style.transform =
+        card.dataset.baseTransform;
 
-    card.addEventListener(
-      "mouseleave",
-      ()=>{
+    }
 
-        if(
-          selectedIndex !== null
-        ){
-          return;
-        }
+  });
 
-
-        card.classList.remove(
-          "hover-lift"
-        );
-
-
-        card.style.transform =
-          card.dataset.baseTransform;
-
-      }
-    );
-
-
-    /*
-      點擊牌卡
-    */
-
-    card.addEventListener(
-      "click",
-      ()=>{
-        selectCard(
-          card,
-          i
-        );
-      }
-    );
-
-
-    fan.appendChild(card);
-
-  }
-
-
-  arrangeFan();
+  activeTouchCard = null;
 
 }
 
 
-/* =====================================
-   點牌
-===================================== */
+function activateTouchCard(card){
 
-function selectCard(
-  card,
-  index
-){
-
-  if(
-    selectedIndex !== null
-  ){
+  if(selectedIndex !== null)
     return;
-  }
 
+  if(activeTouchCard === card)
+    return;
+
+  clearTouchHover();
+
+  activeTouchCard = card;
+
+  card.classList.add(
+    "hover-lift"
+  );
+
+  card.style.transform =
+    card.dataset.baseTransform +
+    " translateY(-38px) scale(1.07)";
+
+}
+
+
+/*
+  觸控移動：
+  直接取得手指目前所在的牌卡。
+*/
+
+fanStage.addEventListener(
+  "touchmove",
+  function(e){
+
+    if(selectedIndex !== null)
+      return;
+
+    if(!e.touches.length)
+      return;
+
+    const touch =
+      e.touches[0];
+
+    const element =
+      document.elementFromPoint(
+        touch.clientX,
+        touch.clientY
+      );
+
+    if(!element)
+      return;
+
+    const card =
+      element.closest(
+        ".fan-card"
+      );
+
+    if(card){
+
+      activateTouchCard(card);
+
+    }
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+/*
+  手指離開扇形區域後恢復。
+*/
+
+fanStage.addEventListener(
+  "touchend",
+  function(){
+
+    if(selectedIndex !== null)
+      return;
+
+    setTimeout(
+      clearTouchHover,
+      120
+    );
+
+  }
+);
+
+
+/* ==========================================
+   CLICK / TAP CARD
+========================================== */
+
+cards.forEach(card=>{
+
+  card.addEventListener(
+    "click",
+    ()=>{
+
+      if(selectedIndex !== null)
+        return;
+
+      const index =
+        Number(card.dataset.index);
+
+      selectCard(
+        index
+      );
+
+    }
+  );
+
+});
+
+
+/* ==========================================
+   SELECT CARD
+========================================== */
+
+function selectCard(index){
 
   selectedIndex =
     index;
 
+  const card =
+    cards[index];
 
-  selectedFanCard =
-    card;
 
+  clearTouchHover();
+
+
+  /*
+    第一階段：
+    被選中的牌先向上凸出。
+  */
 
   card.classList.add(
-    "is-selected"
-  );
-
-
-  card.classList.remove(
     "hover-lift"
   );
 
-
-  const rect =
-    card.getBoundingClientRect();
+  card.style.transform =
+    card.dataset.baseTransform +
+    " translateY(-38px) scale(1.07)";
 
 
   /*
-    設定正面與背面
+    設定中央圖片。
   */
 
-  flyingFront.src =
-    `${RAW}${index * 2 - 1}.jpg`;
+  centerFrontImg.src =
+    frontSrc(index);
+
+  centerBackImg.src =
+    backSrc(index);
 
 
-  flyingBack.src =
-    `${RAW}${index * 2}.jpg`;
+  /*
+    中央卡片初始設定。
+  */
 
-
-  flyingCard.classList.remove(
+  centerCard.classList.remove(
     "flipped"
   );
 
+  flipHint.classList.remove(
+    "show"
+  );
 
-  /*
-    飛行牌先放在原牌的位置
-  */
+  drawAgain.classList.remove(
+    "show"
+  );
 
-  flyingCard.style.left =
-    `${rect.left}px`;
-
-  flyingCard.style.top =
-    `${rect.top}px`;
-
-  flyingCard.style.width =
-    `${rect.width}px`;
-
-  flyingCard.style.height =
-    `${rect.height}px`;
-
-
-  flyLayer.classList.add(
-    "active"
+  overlay.classList.add(
+    "show"
   );
 
 
   /*
-    點擊後再凸起一次
+    讓原本牌卡淡出，
+    中央閱讀卡飛入。
   */
 
-  card.style.transition =
-    "transform .28s cubic-bezier(.18,.92,.22,1),filter .28s,box-shadow .28s";
+  setTimeout(()=>{
 
+    card.style.opacity =
+      "0";
 
-  card.style.transform =
-    `${card.dataset.baseTransform}
-     translateY(-38px)
-     scale(1.07)`;
+    centerCard.classList.add(
+      "show"
+    );
 
-
-  card.style.filter =
-    "brightness(1.08)";
-
-
-  card.style.boxShadow =
-    "0 28px 55px rgba(55,45,35,.32),0 8px 18px rgba(55,45,35,.18)";
+  },300);
 
 
   /*
-    0.3秒後飛向中央
+    稍微延遲提示，
+    讓使用者先看到完整牌卡。
   */
 
-  setTimeout(
-    ()=>{
+  setTimeout(()=>{
 
-      card.style.opacity =
-        "0";
+    flipHint.classList.add(
+      "show"
+    );
 
+    drawAgain.classList.add(
+      "show"
+    );
 
-      const h =
-        innerHeight * .5;
-
-
-      const w =
-        h * 9 / 16;
-
-
-      flyingCard.style.left =
-        `${(innerWidth - w) / 2}px`;
-
-
-      flyingCard.style.top =
-        `${(innerHeight - h) / 2 + 25}px`;
-
-
-      flyingCard.style.width =
-        `${w}px`;
-
-
-      flyingCard.style.height =
-        `${h}px`;
-
-    },
-    300
-  );
-
-
-  /*
-    飛到中央後才出現翻牌提示
-  */
-
-  setTimeout(
-    ()=>{
-
-      flipHint.classList.add(
-        "show"
-      );
-
-
-      centerHint.classList.add(
-        "show"
-      );
-
-
-      drawAgain.classList.add(
-        "show"
-      );
-
-    },
-    1150
-  );
+  },1150);
 
 }
 
 
-/* =====================================
-   點中央牌 → 3D翻牌
-===================================== */
+/* ==========================================
+   FLIP CARD
+========================================== */
 
-flyingCard.addEventListener(
+centerCard.addEventListener(
   "click",
-  ()=>{
+  function(){
 
-    if(
-      selectedIndex === null
-    ){
+    if(selectedIndex === null)
       return;
-    }
 
-
-    flyingCard.classList.toggle(
+    centerCard.classList.toggle(
       "flipped"
     );
 
-
     /*
-      已翻面
+      翻牌後暫時隱藏提示，
+      翻回正面時重新顯示。
     */
 
     if(
-      flyingCard.classList.contains(
+      centerCard.classList.contains(
         "flipped"
       )
     ){
@@ -1286,208 +1625,152 @@ flyingCard.addEventListener(
         "show"
       );
 
-
-      centerHint.textContent =
-        "再點一次翻回正面";
-
-    }
-
-
-    /*
-      回到正面
-    */
-
-    else{
+    }else{
 
       flipHint.classList.add(
         "show"
       );
 
-
-      centerHint.textContent =
-        "點擊牌卡翻面";
-
     }
 
   }
 );
 
 
-/* =====================================
-   再抽一張
-===================================== */
+/* ==========================================
+   DRAW AGAIN
+========================================== */
 
 drawAgain.addEventListener(
   "click",
-  (event)=>{
+  function(e){
 
-    event.stopPropagation();
+    e.stopPropagation();
 
-    resetCard();
+    if(selectedIndex === null)
+      return;
+
+    const index =
+      selectedIndex;
+
+    const card =
+      cards[index];
+
+
+    flipHint.classList.remove(
+      "show"
+    );
+
+    drawAgain.classList.remove(
+      "show"
+    );
+
+    centerCard.classList.remove(
+      "show"
+    );
+
+    overlay.classList.remove(
+      "show"
+    );
+
+
+    /*
+      中央牌離開後，
+      原牌回到扇形位置。
+    */
+
+    setTimeout(()=>{
+
+      card.style.opacity =
+        "1";
+
+      card.style.transform =
+        card.dataset.baseTransform;
+
+      card.classList.remove(
+        "hover-lift"
+      );
+
+      selectedIndex = null;
+
+    },700);
 
   }
 );
 
 
-/* =====================================
-   回到69張牌陣
-===================================== */
+/* ==========================================
+   OVERLAY CLICK
+========================================== */
 
-function resetCard(){
+overlay.addEventListener(
+  "click",
+  function(){
 
-  if(
-    !selectedFanCard
-  ){
-    return;
+    if(selectedIndex === null)
+      return;
+
+    /*
+      點背景不直接關閉，
+      避免手機誤觸。
+    */
+
   }
+);
 
 
-  flipHint.classList.remove(
-    "show"
-  );
+/* ==========================================
+   GALLERY
+========================================== */
 
+for(let i=0;i<TOTAL;i++){
 
-  centerHint.classList.remove(
-    "show"
-  );
+  const item =
+    document.createElement("div");
 
+  item.className =
+    "gallery-item";
 
-  drawAgain.classList.remove(
-    "show"
-  );
+  const img =
+    document.createElement("img");
 
+  img.src =
+    frontSrc(i);
 
-  /*
-    飛回原來的位置
-  */
+  img.alt =
+    "拾光卡 " + (i+1);
 
-  const rect =
-    selectedFanCard.getBoundingClientRect();
+  img.loading =
+    "lazy";
 
+  img.draggable =
+    false;
 
-  flyingCard.style.left =
-    `${rect.left}px`;
+  item.appendChild(img);
 
-
-  flyingCard.style.top =
-    `${rect.top}px`;
-
-
-  flyingCard.style.width =
-    `${rect.width}px`;
-
-
-  flyingCard.style.height =
-    `${rect.height}px`;
-
-
-  setTimeout(
-    ()=>{
-
-      flyLayer.classList.remove(
-        "active"
-      );
-
-
-      flyingCard.classList.remove(
-        "flipped"
-      );
-
-
-      selectedFanCard.style.opacity =
-        "1";
-
-
-      selectedFanCard.style.filter =
-        "";
-
-
-      selectedFanCard.style.boxShadow =
-        "";
-
-
-      selectedFanCard.style.transition =
-        "";
-
-
-      selectedFanCard.style.transform =
-        selectedFanCard.dataset.baseTransform;
-
-
-      selectedFanCard.classList.remove(
-        "is-selected"
-      );
-
-
-      selectedFanCard =
-        null;
-
-
-      selectedIndex =
-        null;
-
-    },
-    820
-  );
+  galleryGrid.appendChild(item);
 
 }
 
 
-/* =====================================
-   Gallery
-===================================== */
+/* ==========================================
+   INITIAL LAYOUT
+========================================== */
 
-function createGallery(){
-
-  for(
-    let i = 1;
-    i <= TOTAL;
-    i++
-  ){
-
-    const frontNumber =
-      i * 2 - 1;
+layoutFan();
 
 
-    const item =
-      document.createElement("div");
-
-
-    item.className =
-      "gallery-card";
-
-
-    item.innerHTML = `
-      <img
-        class="gallery-front"
-        src="${RAW}${frontNumber}.jpg"
-        alt="拾光卡 ${i}"
-        loading="lazy">
-    `;
-
-
-    galleryGrid.appendChild(
-      item
-    );
-
-  }
-
-}
-
-
-/* =====================================
-   視窗尺寸改變
-===================================== */
+/* ==========================================
+   RESPONSIVE REFRESH
+========================================== */
 
 window.addEventListener(
   "resize",
   ()=>{
 
-    if(
-      selectedIndex === null
-    ){
+    if(selectedIndex === null){
 
-      arrangeFan();
+      layoutFan();
 
     }
 
@@ -1495,13 +1778,34 @@ window.addEventListener(
 );
 
 
-/* =====================================
-   啟動
-===================================== */
+/* ==========================================
+   PRELOAD BACK IMAGES
+========================================== */
 
-createFanCards();
+for(let i=0;i<TOTAL;i++){
 
-createGallery();
+  const img =
+    new Image();
+
+  img.src =
+    backSrc(i);
+
+}
+
+
+/* ==========================================
+   PRELOAD FRONT IMAGES
+========================================== */
+
+for(let i=0;i<TOTAL;i++){
+
+  const img =
+    new Image();
+
+  img.src =
+    frontSrc(i);
+
+}
 
 </script>
 
