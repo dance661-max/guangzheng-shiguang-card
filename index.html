@@ -7,6 +7,8 @@
 <title>光正‧拾光卡｜69道光，陪你走一段路。</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+
 :root{
   --bg:#eee8dc;
   --paper:#f7f3eb;
@@ -28,16 +30,8 @@ body{
   background:var(--bg);
   color:var(--text);
 
-  /* 中文優先使用仿宋／芫荽類型 */
-  font-family:
-    "I.Ming",
-    "FangSong",
-    "仿宋",
-    "Cozette",
-    "芫荽",
-    "TW-Kai",
-    "DFKai-SB",
-    serif;
+  /* 中文固定使用芫荽體 */
+  font-family:"Iansui", sans-serif;
 
   overflow-x:hidden;
 }
@@ -317,14 +311,6 @@ nav a{
 
   left:50%;
   top:50%;
-
-  /*
-    電腦版：
-    84vh
-
-    同時受到 88vw 限制，
-    確保不會超出左右畫面。
-  */
 
   width:min(
     calc(84vh * 9 / 16),
@@ -861,13 +847,7 @@ footer{
     height:43vh;
   }
 
-  /*
-    手機：
-    維持目前你覺得剛好的 82vh
-  */
-
   .center-card{
-
     width:min(
       calc(82vh * 9 / 16),
       88vw
@@ -880,7 +860,6 @@ footer{
 
     max-width:88vw;
     max-height:82vh;
-
   }
 
   .flip-hint{
@@ -933,7 +912,6 @@ footer{
   }
 
   .center-card{
-
     width:min(
       calc(82vh * 9 / 16),
       84vw
@@ -946,7 +924,6 @@ footer{
 
     max-width:84vw;
     max-height:82vh;
-
   }
 
   .gallery{
@@ -978,7 +955,6 @@ footer{
 }
 </style>
 </head>
-
 
 <body>
 
