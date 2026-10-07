@@ -27,11 +27,18 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
+
+  /* 中文優先使用仿宋／芫荽類型 */
   font-family:
-    "Noto Sans TC",
-    "PingFang TC",
-    "Microsoft JhengHei",
-    sans-serif;
+    "I.Ming",
+    "FangSong",
+    "仿宋",
+    "Cozette",
+    "芫荽",
+    "TW-Kai",
+    "DFKai-SB",
+    serif;
+
   overflow-x:hidden;
 }
 
@@ -48,6 +55,7 @@ header{
   top:0;
   left:0;
   right:0;
+
   height:76px;
 
   display:flex;
@@ -59,6 +67,7 @@ header{
   z-index:900;
 
   background:rgba(238,232,220,.88);
+
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
 
@@ -71,6 +80,7 @@ header{
 
   display:flex;
   flex-direction:column;
+
   line-height:1.05;
 }
 
@@ -84,6 +94,7 @@ header{
   margin-top:5px;
 
   font-family:Georgia,serif;
+
   font-size:9px;
   letter-spacing:.16em;
 
@@ -129,6 +140,7 @@ nav a{
   text-align:center;
 
   pointer-events:none;
+
   white-space:nowrap;
 }
 
@@ -136,7 +148,9 @@ nav a{
   margin:0;
 
   font-size:clamp(25px,3vw,42px);
+
   font-weight:400;
+
   letter-spacing:.16em;
 }
 
@@ -144,7 +158,9 @@ nav a{
   margin-top:9px;
 
   font-family:Georgia,serif;
+
   font-size:12px;
+
   letter-spacing:.18em;
 
   color:var(--muted);
@@ -154,6 +170,7 @@ nav a{
   margin-top:15px;
 
   font-size:13px;
+
   letter-spacing:.16em;
 
   color:#6f675d;
@@ -163,7 +180,9 @@ nav a{
   margin-top:5px;
 
   font-family:Georgia,serif;
+
   font-size:10px;
+
   letter-spacing:.08em;
 
   color:#958c80;
@@ -178,6 +197,7 @@ nav a{
 
   left:0;
   right:0;
+
   top:175px;
   bottom:0;
 
@@ -277,6 +297,7 @@ nav a{
   background:rgba(35,30,25,.10);
 
   opacity:0;
+
   pointer-events:none;
 
   transition:opacity .4s ease;
@@ -288,20 +309,8 @@ nav a{
 
 /* =========================
    CENTER CARD
+   ★ DESKTOP 84vh
 ========================= */
-
-/*
-  ★ 這裡是這次最重要的放大調整
-
-  Desktop：
-  78vh
-
-  Mobile：
-  82vh
-
-  同時受到螢幕寬度限制，
-  避免卡片超出畫面。
-*/
 
 .center-card{
   position:fixed;
@@ -309,13 +318,21 @@ nav a{
   left:50%;
   top:50%;
 
+  /*
+    電腦版：
+    84vh
+
+    同時受到 88vw 限制，
+    確保不會超出左右畫面。
+  */
+
   width:min(
-    calc(78vh * 9 / 16),
+    calc(84vh * 9 / 16),
     88vw
   );
 
   height:min(
-    78vh,
+    84vh,
     calc(88vw * 16 / 9)
   );
 
@@ -373,10 +390,6 @@ nav a{
     transform .78s cubic-bezier(.18,.72,.25,1);
 }
 
-/*
-  翻面時，整個卡片轉 180°
-*/
-
 .center-card.flipped .center-inner{
   transform:rotateY(180deg);
 }
@@ -420,22 +433,9 @@ nav a{
 }
 
 /* =========================
-   ★ CENTER BACK
+   CENTER BACK
+   ★ 不旋轉圖片
 ========================= */
-
-/*
-  關鍵修正：
-
-  背面一定要 rotateY(180deg)
-
-  否則 center-inner 翻轉後，
-  背面會因 backface-visibility
-  被瀏覽器隱藏。
-
-  同時：
-  ★ 不旋轉圖片本身
-  ★ 保持你確認過的 A 版本方向
-*/
 
 .center-back{
   transform:rotateY(180deg);
@@ -467,6 +467,7 @@ nav a{
   position:fixed;
 
   left:50%;
+
   bottom:8vh;
 
   transform:translateX(-50%);
@@ -474,7 +475,9 @@ nav a{
   z-index:850;
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
 
   color:rgba(55,49,43,.78);
@@ -495,6 +498,7 @@ nav a{
   height:37px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -511,6 +515,7 @@ nav a{
   margin-top:7px;
 
   font-size:11px;
+
   letter-spacing:.12em;
 }
 
@@ -520,6 +525,7 @@ nav a{
   font-family:Georgia,serif;
 
   font-size:9px;
+
   letter-spacing:.05em;
 
   opacity:.68;
@@ -564,10 +570,13 @@ nav a{
   cursor:pointer;
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
 
   opacity:0;
+
   pointer-events:none;
 
   transition:opacity .4s ease;
@@ -580,11 +589,13 @@ nav a{
 
 .draw-icon{
   font-size:17px;
+
   margin-bottom:3px;
 }
 
 .draw-cn{
   font-size:12px;
+
   letter-spacing:.12em;
 }
 
@@ -594,6 +605,7 @@ nav a{
   font-family:Georgia,serif;
 
   font-size:9px;
+
   letter-spacing:.06em;
 
   color:var(--muted);
@@ -623,6 +635,7 @@ nav a{
   margin:0;
 
   font-size:27px;
+
   font-weight:400;
 
   letter-spacing:.14em;
@@ -634,6 +647,7 @@ nav a{
   font-family:Georgia,serif;
 
   font-size:11px;
+
   letter-spacing:.13em;
 
   color:var(--muted);
@@ -643,6 +657,7 @@ nav a{
   margin-top:18px;
 
   font-size:13px;
+
   line-height:2;
 
   color:#746c61;
@@ -654,6 +669,7 @@ nav a{
   font-family:Georgia,serif;
 
   font-size:10px;
+
   line-height:1.7;
 
   color:#9a9185;
@@ -718,6 +734,7 @@ nav a{
 
 .about-text{
   font-size:14px;
+
   line-height:2.2;
 
   color:#625a50;
@@ -729,6 +746,7 @@ nav a{
   font-family:Georgia,serif;
 
   font-size:11px;
+
   line-height:1.9;
 
   color:#8c8377;
@@ -750,6 +768,7 @@ footer{
 
 .footer-main{
   font-size:11px;
+
   letter-spacing:.12em;
 }
 
@@ -759,6 +778,7 @@ footer{
   font-family:Georgia,serif;
 
   font-size:9px;
+
   letter-spacing:.06em;
 }
 
@@ -777,6 +797,7 @@ footer{
 
 /* =========================
    MOBILE
+   ★ 完全維持目前 82vh
 ========================= */
 
 @media(max-width:768px){
@@ -813,6 +834,7 @@ footer{
 
   .hero-title h1{
     font-size:23px;
+
     letter-spacing:.12em;
   }
 
@@ -822,6 +844,7 @@ footer{
 
   .tagline{
     font-size:10px;
+
     margin-top:12px;
   }
 
@@ -839,8 +862,8 @@ footer{
   }
 
   /*
-    ★ 手機閱讀卡更大
-    82vh
+    手機：
+    維持目前你覺得剛好的 82vh
   */
 
   .center-card{
@@ -883,6 +906,7 @@ footer{
 
 /* =========================
    SMALL MOBILE
+   ★ 維持原本大小
 ========================= */
 
 @media(max-width:430px){
@@ -907,11 +931,6 @@ footer{
     width:calc(40vh * 9 / 16);
     height:40vh;
   }
-
-  /*
-    小手機仍盡量保持超大閱讀模式，
-    但自動受到螢幕寬度限制。
-  */
 
   .center-card{
 
@@ -1028,7 +1047,10 @@ footer{
 
   </div>
 
-  <div class="fan-stage" id="fanStage"></div>
+  <div
+    class="fan-stage"
+    id="fanStage">
+  </div>
 
 </section>
 
@@ -1055,8 +1077,6 @@ footer{
     class="center-inner"
     id="centerInner">
 
-    <!-- FRONT -->
-
     <div
       class="center-face center-front">
 
@@ -1066,9 +1086,6 @@ footer{
         alt="拾光卡正面">
 
     </div>
-
-
-    <!-- BACK -->
 
     <div
       class="center-face center-back">
@@ -1512,10 +1529,6 @@ function activateTouchCard(card){
 }
 
 
-/*
-  手指滑過牌卡
-*/
-
 fanStage.addEventListener(
   "touchmove",
   function(e){
@@ -1598,10 +1611,6 @@ function selectCard(index){
   clearTouchHover();
 
 
-  /*
-    先凸出
-  */
-
   card.classList.add(
     "hover-lift"
   );
@@ -1612,7 +1621,7 @@ function selectCard(index){
 
 
   /*
-    設定圖片
+    設定正面與背面圖片
   */
 
   centerFrontImg.src =
@@ -1623,17 +1632,13 @@ function selectCard(index){
 
 
   /*
-    ★ 強制回到正面
+    每次抽牌一定從正面開始
   */
 
   centerCard.classList.remove(
     "flipped"
   );
 
-
-  /*
-    隱藏提示
-  */
 
   flipHint.classList.remove(
     "show"
@@ -1643,10 +1648,6 @@ function selectCard(index){
     "show"
   );
 
-
-  /*
-    顯示背景遮罩
-  */
 
   overlay.classList.add(
     "show"
@@ -1670,8 +1671,7 @@ function selectCard(index){
 
 
   /*
-    飛入後，
-    才顯示翻牌提示
+    飛入完成後才顯示提示
   */
 
   setTimeout(()=>{
@@ -1706,11 +1706,6 @@ centerCard.addEventListener(
     if(selectedIndex === null)
       return;
 
-
-    /*
-      ★ 只有使用者點中央牌卡，
-      ★ 才會翻牌
-    */
 
     centerCard.classList.toggle(
       "flipped"
@@ -1780,11 +1775,6 @@ drawAgain.addEventListener(
       "show"
     );
 
-
-    /*
-      等中央牌消失後，
-      原牌回到扇形。
-    */
 
     setTimeout(()=>{
 
