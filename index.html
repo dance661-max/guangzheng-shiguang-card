@@ -161,7 +161,29 @@ const $=id=>document.getElementById(id);
 function scrollToId(id){$(id).scrollIntoView({behavior:'smooth'})}
 function setCard(c){selected=c;flipped=false;$('card').classList.remove('flipped');$('card').classList.add('ready');$('frontImg').src=c.front;$('backImg').src=c.back;$('badge').textContent=`NO. ${String(c.id).padStart(2,'0')}`;$('num').textContent=`NO. ${String(c.id).padStart(2,'0')}`;$('message').classList.add('hidden');$('againBtn').classList.remove('hidden');$('shareBtn').classList.remove('hidden');$('hint').textContent='點擊牌卡，翻開背面的拾光文案';$('deckHint').textContent='這一張，是今天遇見你的光';}
 function drawCard(){const pool=cards.filter(c=>c.id!==selected?.id);const c=pool[Math.floor(Math.random()*pool.length)]||cards[0];$('card').classList.remove('shuffling');void $('card').offsetWidth;$('card').classList.add('shuffling');setTimeout(()=>{setCard(c);$('card').scrollIntoView({behavior:'smooth',block:'center'});},360)}
-function flipCard(){if(!selected)return;$('card').classList.toggle('flipped');flipped=!flipped;if(flipped){$('message').classList.remove('hidden');$('message').classList.remove('reveal');void $('message').offsetWidth;$('message').classList.add('reveal');$('hint').textContent='這一句話，送給現在的你。'}else{$('message').classList.add('hidden');$('hint').textContent='點擊牌卡，翻開背面的拾光文案'}}
+function flipCard(){
+  if(!selected)return;
+
+  const card=$('card');
+
+  if(!flipped){
+    $('backImg').src=selected.back+'?v='+Date.now();
+    card.classList.add('flipped');
+    flipped=true;
+
+    $('message').classList.remove('hidden');
+    $('message').classList.remove('reveal');
+    void $('message').offsetWidth;
+    $('message').classList.add('reveal');
+    $('hint').textContent='這一句話，送給現在的你。';
+  }else{
+    card.classList.remove('flipped');
+    flipped=false;
+
+    $('message').classList.add('hidden');
+    $('hint').textContent='點擊牌卡，翻開背面的拾光文案';
+  }
+}
 async function shareCard(){if(!selected)return;const text=`光正‧拾光卡｜第 ${String(selected.id).padStart(2,'0')} 道光\n69道光，陪你走一段路。`;if(navigator.share){try{await navigator.share({title:'光正‧拾光卡',text,url:location.href})}catch(e){}}else if(navigator.clipboard){await navigator.clipboard.writeText(text+'\n'+location.href);showToast('已複製分享文字與網址')}}
 function showToast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
 function gallery(){const grid=$('grid');grid.innerHTML=cards.map(c=>`<button class="tile" onclick="choose(${c.id})"><img loading="lazy" src="${c.front}" alt="第 ${c.id} 道光"><div class="no">NO. ${String(c.id).padStart(2,'0')}</div></button>`).join('')}
