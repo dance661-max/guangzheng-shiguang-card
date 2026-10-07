@@ -28,16 +28,11 @@ body{
     "Noto Serif TC",
     "PMingLiU",
     serif;
-
   color:#675b50;
   background:#eee5d8;
   min-height:100vh;
   overflow-x:hidden;
 }
-
-/* =========================
-   整體
-========================= */
 
 .page{
   width:100%;
@@ -69,8 +64,6 @@ section{
     #eee5d8;
 }
 
-/* 上方標題 */
-
 .hero-header{
   position:relative;
   z-index:100;
@@ -95,13 +88,6 @@ section{
 }
 
 .hero-subtitle{
-  font-family:
-    "FangSong",
-    "仿宋",
-    "STFangsong",
-    "Noto Serif TC",
-    serif;
-
   font-size:14px;
   letter-spacing:3px;
   color:#a18e7d;
@@ -109,7 +95,7 @@ section{
 }
 
 /* =========================
-   扇形牌卡區
+   扇形牌卡
 ========================= */
 
 .deck-area{
@@ -129,7 +115,6 @@ section{
   height:0;
 }
 
-/* 小牌 */
 .fan-card{
   position:absolute;
 
@@ -180,14 +165,16 @@ section{
 }
 
 /* =========================
-   中央抽出的牌
+   中央牌卡
 ========================= */
 
 .draw-stage{
   position:absolute;
   z-index:300;
+
   left:50%;
   top:52%;
+
   transform:translate(-50%,-50%);
 
   width:min(320px,72vw);
@@ -208,7 +195,9 @@ section{
   pointer-events:auto;
 
   filter:
-    drop-shadow(0 28px 34px rgba(86,68,51,.17));
+    drop-shadow(
+      0 28px 34px rgba(86,68,51,.17)
+    );
 }
 
 .card-inner{
@@ -264,11 +253,9 @@ section{
 
   display:block;
 
-  /*
-    正面 JPG 原本是橫式，
-    牌卡需要轉成直式
-  */
-  transform:rotate(90deg) scale(1.5);
+  transform:
+    rotate(90deg)
+    scale(1.5);
 
   transform-origin:center center;
 }
@@ -277,25 +264,27 @@ section{
    背面
 ========================= */
 
+/*
+  ★ 最終確認版本 ★
+
+  偶數 JPG 原始圖片的文字方向，
+  經由「順時針 90 度」後，
+  才會變成正常閱讀方向。
+
+  正確閱讀順序：
+
+  中文標題
+  English title
+
+  中文內容
+  English content
+
+  因此這裡固定使用 rotate(90deg)。
+*/
+
 .back{
   transform:rotateY(180deg);
 }
-
-/*
-  ★★★ 最重要的地方 ★★★
-
-  原始背面 JPG 是橫式，
-  圖片本身的文字方向需要順時針 90 度，
-  才會變成：
-
-      中文標題
-      中文內容
-
-      English title
-      English text
-
-  因此這裡使用 rotate(90deg)
-*/
 
 .back .card-image{
   position:absolute;
@@ -303,14 +292,6 @@ section{
   left:50%;
   top:50%;
 
-  /*
-    3840 × 2160 的原始比例
-    旋轉後會成為直式比例。
-
-    150% 可以讓旋轉後的高度
-    完整填滿牌卡高度，
-    同時保留整張圖片。
-  */
   width:150%;
   height:auto;
 
@@ -329,7 +310,7 @@ section{
 }
 
 /* =========================
-   NO.標籤
+   編號
 ========================= */
 
 .card-number{
@@ -360,7 +341,7 @@ section{
 }
 
 /* =========================
-   抽卡提示
+   提示文字
 ========================= */
 
 .draw-hint{
@@ -377,10 +358,6 @@ section{
   pointer-events:none;
 }
 
-.draw-hint strong{
-  font-weight:400;
-}
-
 /* =========================
    按鈕
 ========================= */
@@ -391,6 +368,7 @@ section{
   display:flex;
   justify-content:center;
   align-items:center;
+
   gap:10px;
 
   pointer-events:auto;
@@ -448,8 +426,10 @@ section{
 
 .scroll-note{
   position:absolute;
+
   bottom:18px;
   left:50%;
+
   transform:translateX(-50%);
 
   color:#aa9784;
@@ -464,7 +444,7 @@ section{
 }
 
 /* =========================
-   第二區
+   Intro
 ========================= */
 
 .intro{
@@ -603,10 +583,10 @@ section{
 
   object-fit:cover;
 
-  transform:rotate(90deg) scale(1.5);
+  transform:
+    rotate(90deg)
+    scale(1.5);
 }
-
-/* 圖庫編號 */
 
 .gallery-number{
   position:absolute;
@@ -710,7 +690,6 @@ footer{
   display:none;
 
   align-items:center;
-
   justify-content:center;
 
   background:rgba(60,48,38,.55);
@@ -780,7 +759,7 @@ footer{
 }
 
 /* =========================
-   Responsive
+   RWD
 ========================= */
 
 @media(max-width:1100px){
@@ -793,7 +772,6 @@ footer{
   .draw-stage{
     width:290px;
   }
-
 }
 
 @media(max-width:800px){
@@ -844,7 +822,6 @@ footer{
     padding-left:6vw;
     padding-right:6vw;
   }
-
 }
 
 @media(max-width:520px){
@@ -871,7 +848,9 @@ footer{
 
   .btn{
     min-width:95px;
+
     padding:9px 14px;
+
     font-size:12px;
   }
 
@@ -891,12 +870,7 @@ footer{
   .about-quote{
     font-size:20px;
   }
-
 }
-
-/* =========================
-   減少動畫
-========================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -906,7 +880,6 @@ footer{
     scroll-behavior:auto !important;
     transition:none !important;
   }
-
 }
 </style>
 </head>
@@ -941,7 +914,7 @@ footer{
     <div class="deck" id="deck"></div>
   </div>
 
-  <!-- 中央抽卡 -->
+  <!-- 中央牌卡 -->
 
   <div class="draw-stage">
 
@@ -953,6 +926,8 @@ footer{
         title="點擊翻牌"
       >
 
+        <!-- 正面 -->
+
         <div class="card-face front">
 
           <img
@@ -962,11 +937,16 @@ footer{
             alt="拾光卡正面"
           >
 
-          <div class="card-number" id="cardNumber">
+          <div
+            class="card-number"
+            id="cardNumber"
+          >
             NO. 01
           </div>
 
         </div>
+
+        <!-- 背面 -->
 
         <div class="card-face back">
 
@@ -977,7 +957,10 @@ footer{
             alt="拾光卡背面"
           >
 
-          <div class="card-number" id="backCardNumber">
+          <div
+            class="card-number"
+            id="backCardNumber"
+          >
             NO. 01
           </div>
 
@@ -1035,14 +1018,20 @@ footer{
   </h2>
 
   <p class="section-text">
+
     這一套牌卡，從校園出發，也從孩子的創意開始。
+
     光正國中視覺藝術課程帶領學生，
     將熟悉的校園景物與生活記憶，
     轉化成一張張獨具特色的牌卡圖像。
+
     <br><br>
+
     69 張牌卡，69 道不同的光。
+
     願你在某一個剛好的時刻，
     抽到一張剛好想對你說的話。
+
   </p>
 
 </section>
@@ -1063,9 +1052,12 @@ footer{
   </h2>
 
   <p class="section-text">
+
     不必急著尋找答案。
+
     有時候，只需要停下來，
     聽聽這一張牌想告訴你的事。
+
   </p>
 
   <button
@@ -1083,7 +1075,10 @@ footer{
      GALLERY
 ========================= -->
 
-<section class="gallery" id="gallery">
+<section
+  class="gallery"
+  id="gallery"
+>
 
   <div class="gallery-head">
 
@@ -1096,8 +1091,10 @@ footer{
     </h2>
 
     <p class="section-text">
+
       每一張作品，都是學生眼中的校園，
       也是他們留給未來自己的光。
+
     </p>
 
   </div>
@@ -1123,20 +1120,28 @@ footer{
     </div>
 
     <div class="about-quote">
+
       「願你在自己的路上，<br>
       找到一點光，也成為別人的光。」
+
     </div>
 
     <p class="about-text">
+
       光正‧拾光卡，
       是從校園生活裡長出來的一套數位牌卡。
+
       <br>
+
       透過攝影、數位繪圖與視覺藝術創作，
       學生把熟悉的校園風景，
       變成可以陪伴人的一張張牌。
+
       <br><br>
+
       這不只是作品，
       也是一段屬於光正的青春記憶。
+
     </p>
 
   </div>
@@ -1145,15 +1150,17 @@ footer{
 
 
 <footer>
+
   臺中市立光正國民中學
   ｜ Guang Jheng Junior High School
+
 </footer>
 
 </div>
 
 
 <!-- =========================
-     圖片放大 Modal
+     Modal
 ========================= -->
 
 <div
@@ -1186,7 +1193,7 @@ footer{
 <script>
 
 /* =========================================================
-   69 張牌卡資料
+   69 張牌卡
 
    1 + 2 = 第 1 張
    3 + 4 = 第 2 張
@@ -1195,11 +1202,11 @@ footer{
 ========================================================= */
 
 const cards = Array.from(
-  { length:69 },
-  (_,i) => ({
-    id:i + 1,
-    front:`${i * 2 + 1}.jpg`,
-    back:`${i * 2 + 2}.jpg`
+  {length:69},
+  (_,i)=>({
+    id:i+1,
+    front:`${i*2+1}.jpg`,
+    back:`${i*2+2}.jpg`
   })
 );
 
@@ -1208,15 +1215,20 @@ const cards = Array.from(
    DOM
 ========================================================= */
 
-const deck = document.getElementById("deck");
+const deck =
+  document.getElementById("deck");
 
-const mainCard = document.getElementById("mainCard");
+const mainCard =
+  document.getElementById("mainCard");
 
-const frontImage = document.getElementById("frontImage");
+const frontImage =
+  document.getElementById("frontImage");
 
-const backImage = document.getElementById("backImage");
+const backImage =
+  document.getElementById("backImage");
 
-const cardNumber = document.getElementById("cardNumber");
+const cardNumber =
+  document.getElementById("cardNumber");
 
 const backCardNumber =
   document.getElementById("backCardNumber");
@@ -1240,146 +1252,145 @@ const modalClose =
   document.getElementById("modalClose");
 
 
-let currentCard = cards[0];
+let currentCard =
+  cards[0];
 
 
 /* =========================================================
-   建立 69 張扇形牌卡
+   建立 69 張弧形牌
 ========================================================= */
 
 function buildDeck(){
 
-  deck.innerHTML = "";
+  deck.innerHTML="";
 
-  const width = window.innerWidth;
+  const width =
+    window.innerWidth;
 
   let spread;
 
+
   if(width >= 1500){
 
-    spread = 1120;
+    spread=1120;
 
   }else if(width >= 1200){
 
-    spread = 960;
+    spread=960;
 
   }else if(width >= 900){
 
-    spread = 820;
+    spread=820;
 
   }else if(width >= 600){
 
-    spread = 700;
+    spread=700;
 
   }else{
 
-    spread = 560;
+    spread=560;
 
   }
 
 
-  cards.forEach((card,index)=>{
+  cards.forEach(
+    (card,index)=>{
 
-    const el =
-      document.createElement("div");
+      const el =
+        document.createElement("div");
 
-    el.className = "fan-card";
+      el.className="fan-card";
 
-    el.dataset.id = card.id;
-
-
-    const img =
-      document.createElement("img");
-
-    img.src = card.front;
-
-    img.alt =
-      `拾光卡 ${card.id}`;
-
-    img.loading = "lazy";
+      el.dataset.id =
+        card.id;
 
 
-    el.appendChild(img);
+      const img =
+        document.createElement("img");
 
-    deck.appendChild(el);
+      img.src =
+        card.front;
 
+      img.alt =
+        `拾光卡 ${card.id}`;
 
-    /*
-      讓 69 張牌形成大扇形
-
-      左側：約 -43°
-      中間：0°
-      右側：約 +43°
-    */
-
-    const progress =
-      index / (cards.length - 1);
-
-    const angle =
-      -43 + progress * 86;
-
-    const x =
-      -spread / 2 + spread * progress;
+      img.loading =
+        "lazy";
 
 
-    /*
-      中央較低，
-      左右逐漸向上，
-      形成弧形
-    */
+      el.appendChild(img);
 
-    const center =
-      progress - .5;
-
-    const y =
-      Math.pow(Math.abs(center),1.65) * 155;
+      deck.appendChild(el);
 
 
-    /*
-      讓牌卡彼此重疊
-    */
-
-    const overlapScale =
-      width < 600 ? .82 : 1;
+      const progress =
+        index /
+        (cards.length-1);
 
 
-    el.style.transform =
-      `
-      translate(
-        ${x}px,
-        ${-y}px
-      )
-      rotate(${angle}deg)
-      scale(${overlapScale})
-      `;
+      const angle =
+        -43 +
+        progress*86;
 
 
-    /*
-      中央牌卡層級最高
-    */
+      const x =
+        -spread/2 +
+        spread*progress;
 
-    el.style.zIndex =
-      String(
-        100 -
-        Math.round(
-          Math.abs(center) * 100
+
+      const center =
+        progress-.5;
+
+
+      const y =
+        Math.pow(
+          Math.abs(center),
+          1.65
+        )*155;
+
+
+      const scale =
+        width < 600
+        ? .82
+        : 1;
+
+
+      el.style.transform =
+        `
+        translate(
+          ${x}px,
+          ${-y}px
         )
+        rotate(${angle}deg)
+        scale(${scale})
+        `;
+
+
+      el.style.zIndex =
+        String(
+          100 -
+          Math.round(
+            Math.abs(center)*100
+          )
+        );
+
+
+      el.addEventListener(
+        "click",
+        ()=>{
+
+          showCard(card);
+
+          window.scrollTo({
+            top:0,
+            behavior:"smooth"
+          });
+
+        }
       );
 
-
-    el.addEventListener(
-      "click",
-      ()=>{
-        showCard(card);
-
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
-      }
-    );
-
-  });
+    }
+  );
 
 }
 
@@ -1390,18 +1401,21 @@ function buildDeck(){
 
 function showCard(card){
 
-  currentCard = card;
+  currentCard =
+    card;
 
 
   /*
-    每次換牌先回到正面
+    換牌時一定回到正面
   */
 
-  mainCard.classList.remove("flipped");
+  mainCard.classList.remove(
+    "flipped"
+  );
 
 
   /*
-    換圖
+    更新正面與背面圖片
   */
 
   frontImage.src =
@@ -1412,12 +1426,13 @@ function showCard(card){
 
 
   /*
-    編號
+    更新編號
   */
 
   const number =
     String(card.id)
       .padStart(2,"0");
+
 
   cardNumber.textContent =
     `NO. ${number}`;
@@ -1427,7 +1442,7 @@ function showCard(card){
 
 
   /*
-    預載背面圖片
+    預先載入背面
   */
 
   const preload =
@@ -1435,11 +1450,12 @@ function showCard(card){
 
   preload.src =
     card.back;
+
 }
 
 
 /* =========================================================
-   翻牌
+   點擊中央牌卡翻面
 ========================================================= */
 
 mainCard.addEventListener(
@@ -1462,6 +1478,7 @@ function drawRandomCard(){
 
   let next;
 
+
   do{
 
     next =
@@ -1473,17 +1490,13 @@ function drawRandomCard(){
       ];
 
   }while(
-    cards.length > 1 &&
-    next.id === currentCard.id
+    cards.length>1 &&
+    next.id===currentCard.id
   );
 
 
   showCard(next);
 
-
-  /*
-    回到首頁牌卡位置
-  */
 
   window.scrollTo({
     top:0,
@@ -1499,7 +1512,7 @@ function drawRandomCard(){
 
 drawAgain.addEventListener(
   "click",
-  (event)=>{
+  event=>{
 
     event.stopPropagation();
 
@@ -1515,25 +1528,22 @@ drawAgain.addEventListener(
 
 shareCard.addEventListener(
   "click",
-  async ()=>{
+  async()=>{
 
     const text =
       `我抽到了「光正‧拾光卡」NO. ${String(currentCard.id).padStart(2,"0")}，69道光，陪你走一段路。`;
 
-    const shareData = {
+
+    const shareData={
       title:"光正‧拾光卡",
       text:text,
       url:window.location.href
     };
 
 
-    /*
-      如果瀏覽器支援原生分享
-    */
-
     if(
       navigator.share &&
-      typeof navigator.share === "function"
+      typeof navigator.share==="function"
     ){
 
       try{
@@ -1544,21 +1554,12 @@ shareCard.addEventListener(
 
       }catch(error){
 
-        /*
-          使用者取消分享，
-          不需要另外處理
-        */
-
       }
 
       return;
+
     }
 
-
-    /*
-      不支援分享時，
-      複製網址
-    */
 
     try{
 
@@ -1583,72 +1584,74 @@ shareCard.addEventListener(
 
 
 /* =========================================================
-   建立圖庫
+   建立 69 張圖庫
 ========================================================= */
 
 function buildGallery(){
 
-  galleryGrid.innerHTML = "";
+  galleryGrid.innerHTML="";
 
 
-  cards.forEach(card=>{
+  cards.forEach(
+    card=>{
 
-    const item =
-      document.createElement("div");
+      const item =
+        document.createElement("div");
 
-    item.className =
-      "gallery-item";
-
-
-    const img =
-      document.createElement("img");
-
-    img.src =
-      card.front;
-
-    img.alt =
-      `拾光卡 ${card.id}`;
-
-    img.loading =
-      "lazy";
+      item.className =
+        "gallery-item";
 
 
-    const number =
-      document.createElement("div");
+      const img =
+        document.createElement("img");
 
-    number.className =
-      "gallery-number";
+      img.src =
+        card.front;
 
-    number.textContent =
-      `NO. ${String(card.id).padStart(2,"0")}`;
+      img.alt =
+        `拾光卡 ${card.id}`;
 
-
-    item.appendChild(img);
-
-    item.appendChild(number);
+      img.loading =
+        "lazy";
 
 
-    item.addEventListener(
-      "click",
-      ()=>{
+      const number =
+        document.createElement("div");
 
-        modalImage.src =
-          card.front;
+      number.className =
+        "gallery-number";
 
-        modalImage.alt =
-          `拾光卡 ${card.id}`;
-
-        imageModal.classList.add(
-          "show"
-        );
-
-      }
-    );
+      number.textContent =
+        `NO. ${String(card.id).padStart(2,"0")}`;
 
 
-    galleryGrid.appendChild(item);
+      item.appendChild(img);
 
-  });
+      item.appendChild(number);
+
+
+      item.addEventListener(
+        "click",
+        ()=>{
+
+          modalImage.src =
+            card.front;
+
+          modalImage.alt =
+            `拾光卡 ${card.id}`;
+
+          imageModal.classList.add(
+            "show"
+          );
+
+        }
+      );
+
+
+      galleryGrid.appendChild(item);
+
+    }
+  );
 
 }
 
@@ -1674,7 +1677,8 @@ imageModal.addEventListener(
   event=>{
 
     if(
-      event.target === imageModal
+      event.target===
+      imageModal
     ){
 
       imageModal.classList.remove(
@@ -1688,7 +1692,7 @@ imageModal.addEventListener(
 
 
 /* =========================================================
-   ESC 關閉
+   ESC
 ========================================================= */
 
 document.addEventListener(
@@ -1696,7 +1700,7 @@ document.addEventListener(
   event=>{
 
     if(
-      event.key === "Escape"
+      event.key==="Escape"
     ){
 
       imageModal.classList.remove(
@@ -1721,7 +1725,7 @@ showCard(cards[0]);
 
 
 /* =========================================================
-   視窗尺寸改變
+   RWD
 ========================================================= */
 
 let resizeTimer;
@@ -1730,7 +1734,9 @@ window.addEventListener(
   "resize",
   ()=>{
 
-    clearTimeout(resizeTimer);
+    clearTimeout(
+      resizeTimer
+    );
 
     resizeTimer =
       setTimeout(
