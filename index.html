@@ -2,41 +2,23 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>光正‧拾光卡｜69道光，陪你走一段路。</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-:root{
-  --bg:#f4efe7;
-  --paper:#faf7f1;
-  --text:#554c43;
-  --muted:#8c8175;
-  --accent:#a88f78;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:
-    "Noto Sans TC",
-    "PingFang TC",
-    "Microsoft JhengHei",
-    sans-serif;
+  background:#f4efe7;
+  color:#554c43;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
   overflow-x:hidden;
 }
 
 /* =========================
-   HERO
+   首頁
 ========================= */
 
 .hero{
@@ -48,68 +30,67 @@ body{
   background:
     radial-gradient(
       circle at 50% 35%,
-      rgba(255,255,255,.72),
-      rgba(244,239,231,.95) 55%,
-      #eee7dc 100%
+      #fffdf9,
+      #f4efe7 60%,
+      #ebe3d8
     );
 }
 
 .hero-content{
   position:absolute;
   z-index:20;
-  top:6vh;
+  top:5vh;
   left:50%;
   transform:translateX(-50%);
+  width:92%;
   text-align:center;
-  width:90%;
   pointer-events:none;
 }
 
 .kicker{
-  font-size:13px;
-  letter-spacing:.28em;
-  color:var(--muted);
-  margin-bottom:12px;
+  font-size:12px;
+  letter-spacing:.25em;
+  color:#9a8d80;
 }
 
 .title{
+  margin-top:10px;
   font-family:
     "Noto Serif TC",
     "Songti TC",
     "PMingLiU",
     serif;
-  font-size:clamp(30px,4vw,52px);
+  font-size:clamp(30px,4vw,50px);
   font-weight:500;
   letter-spacing:.12em;
-  color:#51483f;
 }
 
 .subtitle{
-  margin-top:12px;
-  font-size:14px;
-  letter-spacing:.18em;
-  color:#94887c;
+  margin-top:10px;
+  font-size:13px;
+  letter-spacing:.16em;
+  color:#95897d;
 }
 
 .hint{
-  margin-top:15px;
+  margin-top:12px;
   font-size:12px;
-  letter-spacing:.14em;
-  color:#aa9d90;
+  letter-spacing:.12em;
+  color:#aa9e92;
 }
 
+
 /* =========================
-   CARD FAN
+   69 張牌扇形
 ========================= */
 
 .fan-area{
   position:absolute;
   left:0;
   right:0;
-  bottom:-4vh;
   top:18vh;
+  bottom:-3vh;
   overflow:visible;
-  perspective:1800px;
 }
 
 .fan{
@@ -118,19 +99,14 @@ body{
   overflow:visible;
 }
 
-/*
-  每張牌：
-  高度約 50vh
-  寬度依 9:16 比例計算
-*/
 .fan-card{
   position:absolute;
 
-  height:50vh;
-  width:calc(50vh * 9 / 16);
-
   left:50%;
   top:58%;
+
+  width:calc(50vh * 9 / 16);
+  height:50vh;
 
   border-radius:8px;
   overflow:hidden;
@@ -138,45 +114,35 @@ body{
   background:#eee8df;
 
   box-shadow:
-    0 12px 28px rgba(75,62,48,.16),
-    0 3px 8px rgba(75,62,48,.10);
+    0 10px 25px rgba(60,50,40,.16);
 
   cursor:pointer;
 
   transform-origin:50% 92%;
 
   transition:
-    transform .65s cubic-bezier(.2,.8,.2,1),
-    filter .35s ease,
-    box-shadow .35s ease;
+    transform .28s cubic-bezier(.2,.85,.2,1),
+    box-shadow .28s,
+    filter .28s;
 
   will-change:transform;
 
   user-select:none;
-  -webkit-user-select:none;
-}
-
-.fan-card:hover{
-  filter:brightness(1.04);
-  box-shadow:
-    0 18px 35px rgba(75,62,48,.22),
-    0 5px 12px rgba(75,62,48,.12);
 }
 
 .fan-card img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:contain;
   pointer-events:none;
 }
 
-/*
-  正面原始圖片是 16:9
-  需要旋轉 90 度成為 9:16
+
+/* 正面圖片
+   原始圖片 16:9
+   旋轉 90° → 9:16
 */
-.fan-card .front-img{
+
+.front-img{
   position:absolute;
+
   left:50%;
   top:50%;
 
@@ -184,41 +150,48 @@ body{
   height:auto;
 
   max-width:none;
-  max-height:none;
 
   transform:
     translate(-50%,-50%)
     rotate(90deg);
 
-  object-fit:contain;
+  display:block;
 }
 
-/*
-  背面：
-  維持我們剛剛確認的 A 版本
-  不旋轉
-  完整顯示
-*/
-.fan-card .back-img{
-  position:absolute;
-  left:50%;
-  top:50%;
-
-  width:100%;
-  height:100%;
-
-  object-fit:contain;
-
-  transform:translate(-50%,-50%);
-}
 
 /* =========================
-   FLYING CARD
+   滑鼠移上牌卡
+========================= */
+
+.fan-card.hover-lift{
+  filter:brightness(1.08);
+
+  box-shadow:
+    0 28px 55px rgba(55,45,35,.32),
+    0 8px 18px rgba(55,45,35,.18);
+
+  z-index:9998 !important;
+}
+
+
+/* =========================
+   被選取的牌
+========================= */
+
+.fan-card.is-selected{
+  z-index:9999 !important;
+  transition:none;
+}
+
+
+/* =========================
+   飛到中央的牌
 ========================= */
 
 .fly-layer{
   position:fixed;
   inset:0;
+
   z-index:1000;
 
   pointer-events:none;
@@ -230,11 +203,6 @@ body{
   display:block;
 }
 
-/*
-  這張牌不是一開始就存在。
-  只有點擊某張牌後，
-  才從原本位置飛到中央。
-*/
 .flying-card{
   position:fixed;
 
@@ -250,21 +218,24 @@ body{
     0 30px 80px rgba(55,45,36,.28),
     0 8px 20px rgba(55,45,36,.15);
 
-  transform-origin:center center;
+  transform-origin:center;
 
   transition:
-    left .85s cubic-bezier(.18,.86,.25,1),
-    top .85s cubic-bezier(.18,.86,.25,1),
-    width .85s cubic-bezier(.18,.86,.25,1),
-    height .85s cubic-bezier(.18,.86,.25,1),
-    transform .85s cubic-bezier(.18,.86,.25,1);
+    left .8s cubic-bezier(.18,.86,.25,1),
+    top .8s cubic-bezier(.18,.86,.25,1),
+    width .8s cubic-bezier(.18,.86,.25,1),
+    height .8s cubic-bezier(.18,.86,.25,1);
 
   pointer-events:auto;
 
   cursor:pointer;
 }
 
-/* 牌面 */
+
+/* =========================
+   3D 翻牌
+========================= */
+
 .card-inner{
   position:absolute;
   inset:0;
@@ -283,9 +254,6 @@ body{
   position:absolute;
   inset:0;
 
-  width:100%;
-  height:100%;
-
   overflow:hidden;
 
   backface-visibility:hidden;
@@ -294,13 +262,12 @@ body{
   background:#eee8df;
 }
 
+
 /* 正面 */
-.card-front{
-  transform:rotateY(0deg);
-}
 
 .card-front img{
   position:absolute;
+
   left:50%;
   top:50%;
 
@@ -308,24 +275,25 @@ body{
   height:auto;
 
   max-width:none;
-  max-height:none;
 
   transform:
     translate(-50%,-50%)
     rotate(90deg);
-
-  object-fit:contain;
-
-  pointer-events:none;
 }
 
-/* 背面 */
+
+/* =========================
+   背面
+   注意：不旋轉
+========================= */
+
 .card-back{
   transform:rotateY(180deg);
 }
 
 .card-back img{
   position:absolute;
+
   left:50%;
   top:50%;
 
@@ -335,13 +303,97 @@ body{
   object-fit:contain;
 
   transform:translate(-50%,-50%);
-
-  pointer-events:none;
 }
 
-/* 中央牌下面的提示 */
+
+/* =========================
+   ↻ 翻牌提示
+========================= */
+
+.flip-hint{
+  position:fixed;
+
+  z-index:1002;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(
+      calc(-50% + 150px),
+      calc(-50% + 220px)
+    );
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:opacity .35s ease;
+}
+
+.flip-hint.show{
+  opacity:1;
+}
+
+.flip-icon{
+  width:42px;
+  height:42px;
+
+  border:1px solid rgba(120,105,90,.45);
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:rgba(250,247,241,.92);
+
+  font-size:22px;
+  color:#76695d;
+
+  animation:
+    flipSpin 2.2s ease-in-out infinite;
+
+  box-shadow:
+    0 5px 14px rgba(70,55,42,.12);
+}
+
+.flip-label{
+  font-size:10px;
+  letter-spacing:.14em;
+  color:#807469;
+  white-space:nowrap;
+}
+
+@keyframes flipSpin{
+
+  0%,100%{
+    transform:rotate(0deg) scale(1);
+  }
+
+  45%{
+    transform:rotate(180deg) scale(1.06);
+  }
+
+  55%{
+    transform:rotate(180deg) scale(1.06);
+  }
+
+}
+
+
+/* =========================
+   中央提示
+========================= */
+
 .center-hint{
   position:fixed;
+
   z-index:1001;
 
   left:50%;
@@ -350,26 +402,29 @@ body{
   transform:translateX(-50%);
 
   font-size:12px;
-  letter-spacing:.18em;
+  letter-spacing:.16em;
 
   color:rgba(75,65,56,.65);
 
-  pointer-events:none;
-
   opacity:0;
-  transition:opacity .5s ease;
+
+  transition:opacity .4s;
+
+  pointer-events:none;
 }
 
 .center-hint.show{
   opacity:1;
 }
 
+
 /* =========================
-   DRAW AGAIN
+   再抽一張
 ========================= */
 
 .draw-again{
   position:fixed;
+
   z-index:1002;
 
   left:50%;
@@ -377,8 +432,11 @@ body{
 
   transform:translateX(-50%);
 
-  border:1px solid rgba(130,110,92,.35);
-  background:rgba(250,247,241,.92);
+  border:
+    1px solid rgba(130,110,92,.35);
+
+  background:
+    rgba(250,247,241,.94);
 
   color:#665b50;
 
@@ -392,12 +450,12 @@ body{
   cursor:pointer;
 
   opacity:0;
+
   pointer-events:none;
 
   transition:
-    opacity .35s ease,
-    background .25s ease,
-    transform .25s ease;
+    opacity .35s,
+    transform .25s;
 }
 
 .draw-again.show{
@@ -406,41 +464,14 @@ body{
 }
 
 .draw-again:hover{
-  background:#fff;
-  transform:translateX(-50%) translateY(-2px);
+  transform:
+    translateX(-50%)
+    translateY(-2px);
 }
+
 
 /* =========================
-   NAV
-========================= */
-
-.nav{
-  position:absolute;
-  z-index:30;
-
-  right:30px;
-  top:30px;
-
-  display:flex;
-  gap:20px;
-}
-
-.nav a{
-  color:#807469;
-  text-decoration:none;
-
-  font-size:12px;
-  letter-spacing:.12em;
-
-  transition:color .25s ease;
-}
-
-.nav a:hover{
-  color:#4f463d;
-}
-
-/* =========================
-   GALLERY
+   Gallery
 ========================= */
 
 .section{
@@ -457,6 +488,7 @@ body{
     serif;
 
   font-size:32px;
+
   font-weight:500;
 
   letter-spacing:.15em;
@@ -470,6 +502,7 @@ body{
   margin-top:15px;
 
   font-size:13px;
+
   letter-spacing:.1em;
 
   color:#968a7e;
@@ -484,7 +517,10 @@ body{
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fill,minmax(150px,1fr));
+    repeat(
+      auto-fill,
+      minmax(150px,1fr)
+    );
 
   gap:24px;
 }
@@ -501,20 +537,16 @@ body{
   background:#ebe5dc;
 
   box-shadow:
-    0 6px 18px rgba(70,60,50,.10);
+    0 6px 18px rgba(70,60,50,.1);
 }
 
 .gallery-card img{
-  width:100%;
-  height:100%;
-
-  object-fit:contain;
-
   display:block;
 }
 
-.gallery-card .gallery-front{
+.gallery-front{
   position:absolute;
+
   left:50%;
   top:50%;
 
@@ -528,8 +560,9 @@ body{
     rotate(90deg);
 }
 
+
 /* =========================
-   ABOUT
+   About
 ========================= */
 
 .about{
@@ -557,8 +590,9 @@ body{
   letter-spacing:.08em;
 }
 
+
 /* =========================
-   FOOTER
+   Footer
 ========================= */
 
 footer{
@@ -575,8 +609,9 @@ footer{
   letter-spacing:.12em;
 }
 
+
 /* =========================
-   MOBILE
+   手機版
 ========================= */
 
 @media(max-width:700px){
@@ -585,43 +620,22 @@ footer{
     min-height:680px;
   }
 
-  .hero-content{
-    top:5vh;
-  }
-
-  .title{
-    font-size:28px;
-  }
-
-  .subtitle{
-    font-size:11px;
-  }
-
   .fan-area{
     top:20vh;
-    bottom:-3vh;
   }
 
-  .fan-card{
-    height:50vh;
-    width:calc(50vh * 9 / 16);
-  }
-
+  .fan-card,
   .flying-card{
     height:50vh;
     width:calc(50vh * 9 / 16);
   }
 
-  .nav{
-    top:auto;
-    right:auto;
-    left:50%;
-    bottom:18px;
-    transform:translateX(-50%);
-  }
-
-  .nav a{
-    font-size:11px;
+  .flip-hint{
+    transform:
+      translate(
+        calc(-50% + 95px),
+        calc(-50% + 220px)
+      );
   }
 
   .gallery{
@@ -642,23 +656,20 @@ footer{
   .draw-again{
     bottom:3vh;
   }
+
 }
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     HERO
-========================= -->
+
+<!-- =====================================
+     首頁／69張牌
+===================================== -->
 
 <section class="hero" id="home">
-
-  <div class="nav">
-    <a href="#home">拾光卡</a>
-    <a href="#gallery">作品</a>
-    <a href="#about">關於</a>
-  </div>
 
   <div class="hero-content">
 
@@ -680,30 +691,50 @@ footer{
 
   </div>
 
-  <!-- 69張牌 -->
+
   <div class="fan-area">
-    <div class="fan" id="fan"></div>
+
+    <div
+      class="fan"
+      id="fan">
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- =========================
-     FLYING CARD
-========================= -->
+<!-- =====================================
+     飛到中央的牌
+===================================== -->
 
-<div class="fly-layer" id="flyLayer">
+<div
+  class="fly-layer"
+  id="flyLayer">
 
-  <div class="flying-card" id="flyingCard">
+  <div
+    class="flying-card"
+    id="flyingCard">
 
     <div class="card-inner">
 
-      <div class="card-face card-front">
-        <img id="flyingFront" src="" alt="">
+      <div
+        class="card-face card-front">
+
+        <img
+          id="flyingFront"
+          alt="拾光卡正面">
+
       </div>
 
-      <div class="card-face card-back">
-        <img id="flyingBack" src="" alt="">
+
+      <div
+        class="card-face card-back">
+
+        <img
+          id="flyingBack"
+          alt="拾光卡背面">
+
       </div>
 
     </div>
@@ -712,22 +743,51 @@ footer{
 
 </div>
 
-<div class="center-hint" id="centerHint">
-  點擊牌卡翻面
+
+<!-- =====================================
+     翻牌提示
+===================================== -->
+
+<div
+  class="flip-hint"
+  id="flipHint">
+
+  <div class="flip-icon">
+    ↻
+  </div>
+
+  <div class="flip-label">
+    點擊翻牌
+  </div>
+
 </div>
+
+
+<div
+  class="center-hint"
+  id="centerHint">
+
+  點擊牌卡翻面
+
+</div>
+
 
 <button
   class="draw-again"
   id="drawAgain">
+
   再抽一張
+
 </button>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- =====================================
+     Gallery
+===================================== -->
 
-<section class="section" id="gallery">
+<section
+  class="section"
+  id="gallery">
 
   <h2 class="section-title">
     69張拾光
@@ -737,16 +797,21 @@ footer{
     每一張，都是光正孩子留給校園的一道光。
   </p>
 
-  <div class="gallery" id="galleryGrid"></div>
+  <div
+    class="gallery"
+    id="galleryGrid">
+  </div>
 
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- =====================================
+     About
+===================================== -->
 
-<section class="about" id="about">
+<section
+  class="about"
+  id="about">
 
   <div class="about-inner">
 
@@ -756,10 +821,11 @@ footer{
 
     <p>
       這一套牌卡，從校園出發，也從孩子的創意開始。
-      光正國中視覺藝術老師帶領畢業生，
-      將校園景物與生活記憶融入視覺藝術課程。
-      學生透過攝影與 iPad 數位繪圖，
-      將熟悉的校園風景轉化為獨具特色的牌卡圖像。
+    </p>
+
+    <p>
+      光正國中學生將熟悉的校園景物與生活記憶，
+      轉化為一張張獨具特色的視覺作品。
     </p>
 
     <p>
@@ -779,171 +845,306 @@ footer{
 
 <script>
 
-/* =====================================================
+/* =====================================
    基本設定
-===================================================== */
+===================================== */
 
-const TOTAL_CARDS = 69;
+const TOTAL = 69;
 
-const fan = document.getElementById("fan");
+const fan =
+  document.getElementById("fan");
 
-const flyLayer = document.getElementById("flyLayer");
-const flyingCard = document.getElementById("flyingCard");
+const flyLayer =
+  document.getElementById("flyLayer");
 
-const flyingFront = document.getElementById("flyingFront");
-const flyingBack = document.getElementById("flyingBack");
+const flyingCard =
+  document.getElementById("flyingCard");
 
-const centerHint = document.getElementById("centerHint");
-const drawAgain = document.getElementById("drawAgain");
+const flyingFront =
+  document.getElementById("flyingFront");
 
-const galleryGrid = document.getElementById("galleryGrid");
+const flyingBack =
+  document.getElementById("flyingBack");
+
+const flipHint =
+  document.getElementById("flipHint");
+
+const centerHint =
+  document.getElementById("centerHint");
+
+const drawAgain =
+  document.getElementById("drawAgain");
+
+const galleryGrid =
+  document.getElementById("galleryGrid");
+
 
 let selectedIndex = null;
+
 let selectedFanCard = null;
 
 
-/* =====================================================
-   建立 69 張牌
-===================================================== */
+/*
+  GitHub 圖片位置
+*/
 
-function createFanCards(){
-
-  fan.innerHTML = "";
-
-  for(let i = 1; i <= TOTAL_CARDS; i++){
-
-    const frontNumber = i * 2 - 1;
-    const backNumber = i * 2;
-
-    const card = document.createElement("div");
-
-    card.className = "fan-card";
-
-    card.dataset.index = i;
-
-    card.innerHTML = `
-      <img
-        class="front-img"
-        src="${frontNumber}.jpg"
-        alt="拾光卡 ${i}"
-        draggable="false"
-      >
-    `;
-
-    card.addEventListener("click", function(e){
-
-      e.stopPropagation();
-
-      if(selectedIndex !== null){
-        return;
-      }
-
-      selectCard(card, i);
-
-    });
-
-    fan.appendChild(card);
-  }
-
-  arrangeFan();
-}
+const RAW =
+  "https://raw.githubusercontent.com/dance661-max/guangzheng-shiguang-card/main/";
 
 
-/* =====================================================
-   扇形排列
-===================================================== */
+/* =====================================
+   69張牌的扇形排列
+===================================== */
 
 function arrangeFan(){
 
-  const cards = [...document.querySelectorAll(".fan-card")];
-
-  const total = cards.length;
-
-  /*
-    中間較高
-    左右慢慢下降
-    形成大型弧形牌陣
-  */
+  const cards =
+    [...document.querySelectorAll(".fan-card")];
 
   cards.forEach((card,index)=>{
 
     const t =
-      total === 1
-      ? 0
-      : index / (total - 1);
+      index / (TOTAL - 1);
 
     /*
-      -1 → 左
-       0 → 中
-       1 → 右
+      左右水平展開
     */
-    const x = (t - 0.5) * 96;
+
+    const x =
+      (t - .5) * 96;
+
 
     /*
-      弧形：
-      中間比較高
-      兩側稍微低
+      中間高、左右低
     */
-    const arc = Math.pow(
-      Math.abs(t - 0.5) * 2,
-      2
-    );
 
-    const y = arc * 15;
+    const arc =
+      Math.pow(
+        Math.abs(t - .5) * 2,
+        2
+      );
+
+    const y =
+      arc * 15;
+
 
     /*
-      左右旋轉
+      扇形旋轉角度
     */
+
     const angle =
-      (t - 0.5) * 72;
+      (t - .5) * 72;
+
 
     /*
-      讓中間牌稍微在上層
+      層次
     */
-    const distance =
-      Math.abs(t - 0.5);
 
     const z =
-      100 - Math.round(distance * 50) + index;
+      100 -
+      Math.round(
+        Math.abs(t - .5) * 50
+      ) +
+      index;
+
 
     card.style.zIndex = z;
 
-    card.style.transform =
+
+    card.dataset.baseTransform =
       `translate(
         calc(-50% + ${x}vw),
         calc(-50% + ${y}vh)
       )
       rotate(${angle}deg)`;
+
+
+    card.style.transform =
+      card.dataset.baseTransform;
+
   });
+
 }
 
 
-/* =====================================================
-   點牌 → 飛到中央
-===================================================== */
+/* =====================================
+   建立69張牌
+===================================== */
 
-function selectCard(card,index){
+function createFanCards(){
 
-  selectedIndex = index;
-  selectedFanCard = card;
+  for(
+    let i = 1;
+    i <= TOTAL;
+    i++
+  ){
 
-  const frontNumber = index * 2 - 1;
-  const backNumber = index * 2;
+    const frontNumber =
+      i * 2 - 1;
+
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "fan-card";
+
+
+    card.dataset.index =
+      i;
+
+
+    card.innerHTML = `
+      <img
+        class="front-img"
+        src="${RAW}${frontNumber}.jpg"
+        alt="拾光卡 ${i}"
+        draggable="false">
+    `;
+
+
+    /*
+      滑鼠移入：
+      明顯往上凸
+    */
+
+    card.addEventListener(
+      "mouseenter",
+      ()=>{
+
+        if(
+          selectedIndex !== null
+        ){
+          return;
+        }
+
+
+        card.classList.add(
+          "hover-lift"
+        );
+
+
+        card.style.transform =
+          `${card.dataset.baseTransform}
+           translateY(-38px)
+           scale(1.07)`;
+
+      }
+    );
+
+
+    /*
+      滑鼠移出
+    */
+
+    card.addEventListener(
+      "mouseleave",
+      ()=>{
+
+        if(
+          selectedIndex !== null
+        ){
+          return;
+        }
+
+
+        card.classList.remove(
+          "hover-lift"
+        );
+
+
+        card.style.transform =
+          card.dataset.baseTransform;
+
+      }
+    );
+
+
+    /*
+      點擊牌卡
+    */
+
+    card.addEventListener(
+      "click",
+      ()=>{
+        selectCard(
+          card,
+          i
+        );
+      }
+    );
+
+
+    fan.appendChild(card);
+
+  }
+
+
+  arrangeFan();
+
+}
+
+
+/* =====================================
+   點牌
+===================================== */
+
+function selectCard(
+  card,
+  index
+){
+
+  if(
+    selectedIndex !== null
+  ){
+    return;
+  }
+
+
+  selectedIndex =
+    index;
+
+
+  selectedFanCard =
+    card;
+
+
+  card.classList.add(
+    "is-selected"
+  );
+
+
+  card.classList.remove(
+    "hover-lift"
+  );
+
+
+  const rect =
+    card.getBoundingClientRect();
+
 
   /*
-    先取得牌目前在畫面上的實際位置
+    設定正面與背面
   */
-  const rect = card.getBoundingClientRect();
+
+  flyingFront.src =
+    `${RAW}${index * 2 - 1}.jpg`;
+
+
+  flyingBack.src =
+    `${RAW}${index * 2}.jpg`;
+
+
+  flyingCard.classList.remove(
+    "flipped"
+  );
+
 
   /*
-    建立中央牌
+    飛行牌先放在原牌的位置
   */
-  flyingFront.src = `${frontNumber}.jpg`;
-  flyingBack.src = `${backNumber}.jpg`;
 
-  /*
-    先讓飛行牌與原牌完全重疊
-  */
   flyingCard.style.left =
     `${rect.left}px`;
 
@@ -956,221 +1157,155 @@ function selectCard(card,index){
   flyingCard.style.height =
     `${rect.height}px`;
 
-  flyingCard.style.transform =
-    `rotate(0deg)`;
 
-  flyingCard.classList.remove("flipped");
+  flyLayer.classList.add(
+    "active"
+  );
 
-  flyLayer.classList.add("active");
-
-  /*
-    原本那張牌暫時隱藏
-  */
-  card.style.opacity = "0";
-  card.style.pointerEvents = "none";
 
   /*
-    強制瀏覽器先完成初始位置
+    點擊後再凸起一次
   */
-  requestAnimationFrame(()=>{
 
-    requestAnimationFrame(()=>{
+  card.style.transition =
+    "transform .28s cubic-bezier(.18,.92,.22,1),filter .28s,box-shadow .28s";
 
-      moveCardToCenter();
 
-    });
+  card.style.transform =
+    `${card.dataset.baseTransform}
+     translateY(-38px)
+     scale(1.07)`;
 
-  });
+
+  card.style.filter =
+    "brightness(1.08)";
+
+
+  card.style.boxShadow =
+    "0 28px 55px rgba(55,45,35,.32),0 8px 18px rgba(55,45,35,.18)";
+
+
+  /*
+    0.3秒後飛向中央
+  */
+
+  setTimeout(
+    ()=>{
+
+      card.style.opacity =
+        "0";
+
+
+      const h =
+        innerHeight * .5;
+
+
+      const w =
+        h * 9 / 16;
+
+
+      flyingCard.style.left =
+        `${(innerWidth - w) / 2}px`;
+
+
+      flyingCard.style.top =
+        `${(innerHeight - h) / 2 + 25}px`;
+
+
+      flyingCard.style.width =
+        `${w}px`;
+
+
+      flyingCard.style.height =
+        `${h}px`;
+
+    },
+    300
+  );
+
+
+  /*
+    飛到中央後才出現翻牌提示
+  */
+
+  setTimeout(
+    ()=>{
+
+      flipHint.classList.add(
+        "show"
+      );
+
+
+      centerHint.classList.add(
+        "show"
+      );
+
+
+      drawAgain.classList.add(
+        "show"
+      );
+
+    },
+    1150
+  );
+
 }
 
 
-/* =====================================================
-   飛到中央
-===================================================== */
+/* =====================================
+   點中央牌 → 3D翻牌
+===================================== */
 
-function moveCardToCenter(){
+flyingCard.addEventListener(
+  "click",
+  ()=>{
 
-  const vh = window.innerHeight;
-  const vw = window.innerWidth;
-
-  const targetHeight =
-    vh * 0.50;
-
-  const targetWidth =
-    targetHeight * 9 / 16;
-
-  const left =
-    (vw - targetWidth) / 2;
-
-  const top =
-    (vh - targetHeight) / 2 + 25;
-
-  flyingCard.style.left =
-    `${left}px`;
-
-  flyingCard.style.top =
-    `${top}px`;
-
-  flyingCard.style.width =
-    `${targetWidth}px`;
-
-  flyingCard.style.height =
-    `${targetHeight}px`;
-
-  flyingCard.style.transform =
-    `rotate(0deg)`;
-
-  setTimeout(()=>{
-
-    centerHint.classList.add("show");
-    drawAgain.classList.add("show");
-
-  },850);
-}
+    if(
+      selectedIndex === null
+    ){
+      return;
+    }
 
 
-/* =====================================================
-   中央牌 → 翻面
-===================================================== */
-
-flyingCard.addEventListener("click",function(){
-
-  if(selectedIndex === null){
-    return;
-  }
-
-  flyingCard.classList.toggle("flipped");
-
-  centerHint.textContent =
-    flyingCard.classList.contains("flipped")
-    ? "再點一次翻回正面"
-    : "點擊牌卡翻面";
-
-});
+    flyingCard.classList.toggle(
+      "flipped"
+    );
 
 
-/* =====================================================
-   再抽一張
-===================================================== */
+    /*
+      已翻面
+    */
 
-drawAgain.addEventListener("click",function(e){
+    if(
+      flyingCard.classList.contains(
+        "flipped"
+      )
+    ){
 
-  e.stopPropagation();
-
-  resetSelectedCard();
-
-});
+      flipHint.classList.remove(
+        "show"
+      );
 
 
-/* =====================================================
-   回到 69 張牌陣
-===================================================== */
-
-function resetSelectedCard(){
-
-  /*
-    隱藏提示
-  */
-  centerHint.classList.remove("show");
-
-  drawAgain.classList.remove("show");
-
-  /*
-    先讓中央牌縮回原本牌卡的位置
-  */
-  if(selectedFanCard){
-
-    const rect =
-      selectedFanCard.getBoundingClientRect();
-
-    flyingCard.style.left =
-      `${rect.left}px`;
-
-    flyingCard.style.top =
-      `${rect.top}px`;
-
-    flyingCard.style.width =
-      `${rect.width}px`;
-
-    flyingCard.style.height =
-      `${rect.height}px`;
-
-    flyingCard.style.transform =
-      `rotate(0deg)`;
-
-  }
-
-  setTimeout(()=>{
-
-    flyLayer.classList.remove("active");
-
-    flyingCard.classList.remove("flipped");
-
-    if(selectedFanCard){
-
-      selectedFanCard.style.opacity = "1";
-      selectedFanCard.style.pointerEvents = "auto";
+      centerHint.textContent =
+        "再點一次翻回正面";
 
     }
 
-    selectedFanCard = null;
-    selectedIndex = null;
 
-  },850);
-}
+    /*
+      回到正面
+    */
 
+    else{
 
-/* =====================================================
-   Gallery
-===================================================== */
-
-function createGallery(){
-
-  galleryGrid.innerHTML = "";
-
-  for(let i=1;i<=TOTAL_CARDS;i++){
-
-    const frontNumber =
-      i * 2 - 1;
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "gallery-card";
-
-    item.innerHTML = `
-      <img
-        class="gallery-front"
-        src="${frontNumber}.jpg"
-        alt="拾光卡 ${i}"
-        loading="lazy"
-        draggable="false"
-      >
-    `;
-
-    galleryGrid.appendChild(item);
-
-  }
-
-}
+      flipHint.classList.add(
+        "show"
+      );
 
 
-/* =====================================================
-   視窗尺寸改變
-===================================================== */
-
-window.addEventListener(
-  "resize",
-  function(){
-
-    if(selectedIndex === null){
-
-      arrangeFan();
-
-    }else{
-
-      moveCardToCenter();
+      centerHint.textContent =
+        "點擊牌卡翻面";
 
     }
 
@@ -1178,9 +1313,191 @@ window.addEventListener(
 );
 
 
-/* =====================================================
+/* =====================================
+   再抽一張
+===================================== */
+
+drawAgain.addEventListener(
+  "click",
+  (event)=>{
+
+    event.stopPropagation();
+
+    resetCard();
+
+  }
+);
+
+
+/* =====================================
+   回到69張牌陣
+===================================== */
+
+function resetCard(){
+
+  if(
+    !selectedFanCard
+  ){
+    return;
+  }
+
+
+  flipHint.classList.remove(
+    "show"
+  );
+
+
+  centerHint.classList.remove(
+    "show"
+  );
+
+
+  drawAgain.classList.remove(
+    "show"
+  );
+
+
+  /*
+    飛回原來的位置
+  */
+
+  const rect =
+    selectedFanCard.getBoundingClientRect();
+
+
+  flyingCard.style.left =
+    `${rect.left}px`;
+
+
+  flyingCard.style.top =
+    `${rect.top}px`;
+
+
+  flyingCard.style.width =
+    `${rect.width}px`;
+
+
+  flyingCard.style.height =
+    `${rect.height}px`;
+
+
+  setTimeout(
+    ()=>{
+
+      flyLayer.classList.remove(
+        "active"
+      );
+
+
+      flyingCard.classList.remove(
+        "flipped"
+      );
+
+
+      selectedFanCard.style.opacity =
+        "1";
+
+
+      selectedFanCard.style.filter =
+        "";
+
+
+      selectedFanCard.style.boxShadow =
+        "";
+
+
+      selectedFanCard.style.transition =
+        "";
+
+
+      selectedFanCard.style.transform =
+        selectedFanCard.dataset.baseTransform;
+
+
+      selectedFanCard.classList.remove(
+        "is-selected"
+      );
+
+
+      selectedFanCard =
+        null;
+
+
+      selectedIndex =
+        null;
+
+    },
+    820
+  );
+
+}
+
+
+/* =====================================
+   Gallery
+===================================== */
+
+function createGallery(){
+
+  for(
+    let i = 1;
+    i <= TOTAL;
+    i++
+  ){
+
+    const frontNumber =
+      i * 2 - 1;
+
+
+    const item =
+      document.createElement("div");
+
+
+    item.className =
+      "gallery-card";
+
+
+    item.innerHTML = `
+      <img
+        class="gallery-front"
+        src="${RAW}${frontNumber}.jpg"
+        alt="拾光卡 ${i}"
+        loading="lazy">
+    `;
+
+
+    galleryGrid.appendChild(
+      item
+    );
+
+  }
+
+}
+
+
+/* =====================================
+   視窗尺寸改變
+===================================== */
+
+window.addEventListener(
+  "resize",
+  ()=>{
+
+    if(
+      selectedIndex === null
+    ){
+
+      arrangeFan();
+
+    }
+
+  }
+);
+
+
+/* =====================================
    啟動
-===================================================== */
+===================================== */
 
 createFanCards();
 
