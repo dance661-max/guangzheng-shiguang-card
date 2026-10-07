@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#eee5d8">
 <meta name="description" content="光正‧拾光卡｜69道光，陪你走一段路。">
-
 <title>光正‧拾光卡｜69道光，陪你走一段路。</title>
 
 <style>
@@ -20,6 +19,10 @@ html{
 }
 
 body{
+  margin:0;
+  overflow-x:hidden;
+  color:#675b50;
+  background:#eee5d8;
   font-family:
     "FangSong",
     "仿宋",
@@ -28,15 +31,6 @@ body{
     "Noto Serif TC",
     "PMingLiU",
     serif;
-  color:#675b50;
-  background:#eee5d8;
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-.page{
-  width:100%;
-  min-height:100vh;
 }
 
 section{
@@ -44,17 +38,16 @@ section{
 }
 
 /* =========================
-   首頁
+   HERO
 ========================= */
 
 .hero{
-  min-height:100vh;
-  height:100vh;
   position:relative;
+  width:100%;
+  height:100vh;
+  min-height:700px;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+
   background:
     radial-gradient(
       circle at 50% 42%,
@@ -67,35 +60,44 @@ section{
 .hero-header{
   position:relative;
   z-index:100;
+
   text-align:center;
   padding-top:34px;
-  flex-shrink:0;
 }
 
 .logo-small{
-  font-size:12px;
-  letter-spacing:4px;
+  margin-bottom:10px;
+
   color:#8b7968;
-  margin-bottom:12px;
+
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:4px;
 }
 
 .hero-title{
-  font-size:clamp(26px,3vw,42px);
-  font-weight:400;
-  letter-spacing:7px;
+  margin:0;
+
   color:#65594e;
+
+  font-size:clamp(27px,3vw,42px);
+  font-weight:400;
+
+  letter-spacing:7px;
   line-height:1.5;
 }
 
 .hero-subtitle{
+  margin-top:8px;
+
+  color:#a18e7d;
+
   font-size:14px;
   letter-spacing:3px;
-  color:#a18e7d;
-  margin-top:8px;
 }
 
 /* =========================
-   扇形牌卡
+   69張扇形牌
 ========================= */
 
 .deck-area{
@@ -104,13 +106,16 @@ section{
   right:0;
   top:145px;
   bottom:0;
+
   overflow:hidden;
 }
 
 .deck{
   position:absolute;
+
   left:50%;
-  top:35%;
+  top:37%;
+
   width:0;
   height:0;
 }
@@ -124,13 +129,12 @@ section{
   left:-46px;
   top:-69px;
 
-  border-radius:11px;
-
   overflow:hidden;
 
-  background:#faf8f4;
-
   border:1px solid rgba(115,96,77,.18);
+  border-radius:11px;
+
+  background:#faf8f4;
 
   box-shadow:
     0 8px 20px rgba(89,70,52,.13),
@@ -141,26 +145,26 @@ section{
   transform-origin:center bottom;
 
   transition:
-    transform .45s cubic-bezier(.2,.8,.2,1),
-    filter .3s ease,
-    box-shadow .3s ease;
-
-  will-change:transform;
+    transform .4s ease,
+    filter .25s ease,
+    box-shadow .25s ease;
 }
 
 .fan-card:hover{
   z-index:1000 !important;
-  filter:brightness(1.03);
+
+  filter:brightness(1.04);
 
   box-shadow:
-    0 16px 30px rgba(89,70,52,.2),
-    0 4px 8px rgba(89,70,52,.08);
+    0 16px 30px rgba(89,70,52,.20);
 }
 
 .fan-card img{
+  display:block;
+
   width:100%;
   height:100%;
-  display:block;
+
   object-fit:cover;
 }
 
@@ -170,29 +174,27 @@ section{
 
 .draw-stage{
   position:absolute;
+
   z-index:300;
 
   left:50%;
   top:52%;
 
-  transform:translate(-50%,-50%);
-
   width:min(320px,72vw);
+
+  transform:translate(-50%,-50%);
 
   display:flex;
   flex-direction:column;
   align-items:center;
-
-  pointer-events:none;
 }
 
 .main-card-wrap{
   width:100%;
+
   aspect-ratio:2 / 3;
 
   perspective:1600px;
-
-  pointer-events:auto;
 
   filter:
     drop-shadow(
@@ -201,10 +203,10 @@ section{
 }
 
 .card-inner{
+  position:relative;
+
   width:100%;
   height:100%;
-
-  position:relative;
 
   transform-style:preserve-3d;
 
@@ -227,14 +229,13 @@ section{
 
   overflow:hidden;
 
+  border:1px solid rgba(107,88,69,.12);
   border-radius:18px;
 
   background:#fff;
 
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
-
-  border:1px solid rgba(107,88,69,.12);
 }
 
 /* =========================
@@ -246,12 +247,12 @@ section{
 }
 
 .front .card-image{
+  display:block;
+
   width:100%;
   height:100%;
 
   object-fit:cover;
-
-  display:block;
 
   transform:
     rotate(90deg)
@@ -261,30 +262,25 @@ section{
 }
 
 /* =========================
-   背面
+   ★ 背面：完全不旋轉 ★
 ========================= */
-
-/*
-  ★ 最終確認版本 ★
-
-  偶數 JPG 原始圖片的文字方向，
-  經由「順時針 90 度」後，
-  才會變成正常閱讀方向。
-
-  正確閱讀順序：
-
-  中文標題
-  English title
-
-  中文內容
-  English content
-
-  因此這裡固定使用 rotate(90deg)。
-*/
 
 .back{
   transform:rotateY(180deg);
 }
+
+/*
+  已經用獨立檢查頁確認：
+
+  原始 JPG 本身就是正確方向。
+
+  因此這裡：
+  ❌ 不使用 rotate(90deg)
+  ❌ 不使用 rotate(-90deg)
+  ❌ 不使用 scaleX(-1)
+
+  只做尺寸控制，完整呈現原始圖片。
+*/
 
 .back .card-image{
   position:absolute;
@@ -298,24 +294,24 @@ section{
   max-width:none;
   max-height:none;
 
+  display:block;
+
   object-fit:contain;
 
   transform:
-    translate(-50%,-50%)
-    rotate(90deg);
+    translate(-50%,-50%);
 
   transform-origin:center center;
-
-  display:block;
 }
 
 /* =========================
-   編號
+   NO.
 ========================= */
 
 .card-number{
   position:absolute;
-  z-index:10;
+
+  z-index:20;
 
   left:12px;
   top:12px;
@@ -324,13 +320,13 @@ section{
 
   border-radius:20px;
 
-  background:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.90);
 
   color:#76685b;
 
   font-family:
-    "Times New Roman",
-    serif;
+    Arial,
+    sans-serif;
 
   font-size:10px;
 
@@ -341,51 +337,42 @@ section{
 }
 
 /* =========================
-   提示文字
+   提示
 ========================= */
 
 .draw-hint{
   margin-top:18px;
 
-  font-size:13px;
-
-  letter-spacing:3px;
-
   color:#9b8876;
 
-  text-align:center;
+  font-size:13px;
+  letter-spacing:3px;
 
-  pointer-events:none;
+  text-align:center;
 }
 
-/* =========================
-   按鈕
-========================= */
-
 .actions{
-  margin-top:15px;
-
   display:flex;
-  justify-content:center;
+
   align-items:center;
+  justify-content:center;
 
   gap:10px;
 
-  pointer-events:auto;
+  margin-top:15px;
 }
 
 .btn{
+  min-width:110px;
+
+  padding:10px 20px;
+
   border:1px solid #b9a794;
+  border-radius:30px;
 
   background:rgba(255,255,255,.38);
 
   color:#756659;
-
-  border-radius:30px;
-
-  padding:10px 20px;
-
-  min-width:110px;
 
   font-family:
     "FangSong",
@@ -395,64 +382,57 @@ section{
     serif;
 
   font-size:14px;
-
   letter-spacing:1px;
 
   cursor:pointer;
 
-  transition:
-    all .25s ease;
+  transition:.25s ease;
 }
 
 .btn:hover{
-  background:#a89480;
-  color:#fff;
   border-color:#a89480;
+
+  background:#a89480;
+
+  color:#fff;
 }
 
 .btn.primary{
-  background:#a89480;
-  color:#fff;
   border-color:#a89480;
+
+  background:#a89480;
+
+  color:#fff;
 }
 
 .btn.primary:hover{
   background:#8e7967;
 }
 
-/* =========================
-   底部提示
-========================= */
-
 .scroll-note{
   position:absolute;
 
-  bottom:18px;
+  z-index:120;
+
   left:50%;
+  bottom:18px;
 
   transform:translateX(-50%);
 
   color:#aa9784;
 
   font-size:11px;
-
   letter-spacing:2px;
-
-  z-index:120;
-
-  opacity:.8;
 }
 
 /* =========================
-   Intro
+   介紹
 ========================= */
 
 .intro{
   min-height:72vh;
 
-  padding:
-    100px 7vw
-    110px;
+  padding:100px 7vw 110px;
 
   background:#f5f0e8;
 
@@ -460,29 +440,25 @@ section{
 }
 
 .section-label{
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:10px;
-
-  letter-spacing:4px;
+  margin-bottom:18px;
 
   color:#a08c78;
 
-  margin-bottom:18px;
+  font-family:Arial,sans-serif;
+
+  font-size:10px;
+  letter-spacing:4px;
 }
 
 .section-title{
-  font-size:clamp(24px,3vw,36px);
-
-  font-weight:400;
-
-  letter-spacing:6px;
+  margin-bottom:24px;
 
   color:#685b4e;
 
-  margin-bottom:24px;
+  font-size:clamp(24px,3vw,36px);
+  font-weight:400;
+
+  letter-spacing:6px;
 }
 
 .section-text{
@@ -490,13 +466,11 @@ section{
 
   margin:0 auto;
 
-  line-height:2.2;
+  color:#827265;
 
   font-size:15px;
-
+  line-height:2.2;
   letter-spacing:1.5px;
-
-  color:#827265;
 }
 
 /* =========================
@@ -522,39 +496,37 @@ section{
 ========================= */
 
 .gallery{
-  background:#f7f3ec;
+  padding:100px 5vw 120px;
 
-  padding:
-    100px 5vw
-    120px;
+  background:#f7f3ec;
 }
 
 .gallery-head{
-  text-align:center;
-
   margin-bottom:50px;
+
+  text-align:center;
 }
 
 .gallery-grid{
-  width:100%;
-  max-width:1300px;
-
-  margin:0 auto;
-
   display:grid;
 
   grid-template-columns:
     repeat(6,1fr);
 
   gap:14px;
+
+  width:100%;
+  max-width:1300px;
+
+  margin:0 auto;
 }
 
 .gallery-item{
   position:relative;
 
-  aspect-ratio:2 / 3;
-
   overflow:hidden;
+
+  aspect-ratio:2 / 3;
 
   border-radius:10px;
 
@@ -565,9 +537,7 @@ section{
 
   cursor:pointer;
 
-  transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+  transition:.3s ease;
 }
 
 .gallery-item:hover{
@@ -578,6 +548,8 @@ section{
 }
 
 .gallery-item img{
+  display:block;
+
   width:100%;
   height:100%;
 
@@ -596,19 +568,16 @@ section{
 
   padding:4px 8px;
 
-  background:rgba(255,255,255,.88);
-
   border-radius:12px;
 
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:8px;
-
-  letter-spacing:1px;
+  background:rgba(255,255,255,.88);
 
   color:#776858;
+
+  font-family:Arial,sans-serif;
+
+  font-size:8px;
+  letter-spacing:1px;
 }
 
 /* =========================
@@ -618,16 +587,13 @@ section{
 .about{
   min-height:65vh;
 
-  background:#e8ddcf;
-
-  padding:
-    100px 7vw;
+  padding:100px 7vw;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
+
+  background:#e8ddcf;
 
   text-align:center;
 }
@@ -637,25 +603,21 @@ section{
 }
 
 .about-quote{
-  font-size:24px;
-
-  line-height:2;
-
-  letter-spacing:4px;
+  margin-bottom:28px;
 
   color:#6c5d4f;
 
-  margin-bottom:28px;
+  font-size:24px;
+  line-height:2;
+  letter-spacing:4px;
 }
 
 .about-text{
-  font-size:14px;
-
-  line-height:2.2;
-
-  letter-spacing:1.5px;
-
   color:#887767;
+
+  font-size:14px;
+  line-height:2.2;
+  letter-spacing:1.5px;
 }
 
 /* =========================
@@ -665,15 +627,14 @@ section{
 footer{
   padding:35px 20px;
 
-  text-align:center;
-
   background:#d9cbb9;
 
   color:#827161;
 
   font-size:11px;
-
   letter-spacing:2px;
+
+  text-align:center;
 }
 
 /* =========================
@@ -683,20 +644,19 @@ footer{
 .modal{
   position:fixed;
 
-  inset:0;
-
   z-index:2000;
 
-  display:none;
+  inset:0;
 
+  display:none;
   align-items:center;
   justify-content:center;
+
+  padding:20px;
 
   background:rgba(60,48,38,.55);
 
   backdrop-filter:blur(8px);
-
-  padding:20px;
 }
 
 .modal.show{
@@ -707,16 +667,15 @@ footer{
   position:relative;
 
   width:min(420px,90vw);
-
   max-height:90vh;
 
   overflow:hidden;
 
-  background:#f7f3ec;
+  padding:18px;
 
   border-radius:18px;
 
-  padding:18px;
+  background:#f7f3ec;
 
   box-shadow:
     0 30px 70px rgba(40,30,20,.3);
@@ -726,7 +685,6 @@ footer{
   display:block;
 
   width:100%;
-
   max-height:82vh;
 
   object-fit:contain;
@@ -737,14 +695,15 @@ footer{
 .modal-close{
   position:absolute;
 
-  right:12px;
+  z-index:5;
+
   top:12px;
+  right:12px;
 
   width:32px;
   height:32px;
 
   border:0;
-
   border-radius:50%;
 
   background:rgba(255,255,255,.9);
@@ -754,8 +713,6 @@ footer{
   font-size:20px;
 
   cursor:pointer;
-
-  z-index:5;
 }
 
 /* =========================
@@ -785,11 +742,6 @@ footer{
     padding-top:24px;
   }
 
-  .logo-small{
-    font-size:10px;
-    letter-spacing:3px;
-  }
-
   .hero-title{
     font-size:25px;
     letter-spacing:5px;
@@ -813,14 +765,6 @@ footer{
       repeat(3,1fr);
 
     gap:10px;
-  }
-
-  .intro,
-  .gallery,
-  .about,
-  .draw-section{
-    padding-left:6vw;
-    padding-right:6vw;
   }
 }
 
@@ -871,16 +815,6 @@ footer{
     font-size:20px;
   }
 }
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    scroll-behavior:auto !important;
-    transition:none !important;
-  }
-}
 </style>
 </head>
 
@@ -889,7 +823,7 @@ footer{
 <div class="page">
 
 <!-- =========================
-     HERO
+     首頁
 ========================= -->
 
 <section class="hero" id="home">
@@ -1020,7 +954,6 @@ footer{
   <p class="section-text">
 
     這一套牌卡，從校園出發，也從孩子的創意開始。
-
     光正國中視覺藝術課程帶領學生，
     將熟悉的校園景物與生活記憶，
     轉化成一張張獨具特色的牌卡圖像。
@@ -1028,7 +961,6 @@ footer{
     <br><br>
 
     69 張牌卡，69 道不同的光。
-
     願你在某一個剛好的時刻，
     抽到一張剛好想對你說的話。
 
@@ -1038,7 +970,7 @@ footer{
 
 
 <!-- =========================
-     DRAW SECTION
+     抽卡
 ========================= -->
 
 <section class="draw-section">
@@ -1054,7 +986,6 @@ footer{
   <p class="section-text">
 
     不必急著尋找答案。
-
     有時候，只需要停下來，
     聽聽這一張牌想告訴你的事。
 
@@ -1072,7 +1003,7 @@ footer{
 
 
 <!-- =========================
-     GALLERY
+     圖庫
 ========================= -->
 
 <section
@@ -1091,10 +1022,8 @@ footer{
     </h2>
 
     <p class="section-text">
-
       每一張作品，都是學生眼中的校園，
       也是他們留給未來自己的光。
-
     </p>
 
   </div>
@@ -1120,10 +1049,8 @@ footer{
     </div>
 
     <div class="about-quote">
-
       「願你在自己的路上，<br>
       找到一點光，也成為別人的光。」
-
     </div>
 
     <p class="about-text">
@@ -1150,10 +1077,8 @@ footer{
 
 
 <footer>
-
   臺中市立光正國民中學
   ｜ Guang Jheng Junior High School
-
 </footer>
 
 </div>
@@ -1174,7 +1099,6 @@ footer{
       class="modal-close"
       id="modalClose"
       type="button"
-      aria-label="關閉"
     >
       ×
     </button>
@@ -1193,12 +1117,14 @@ footer{
 <script>
 
 /* =========================================================
-   69 張牌卡
+   69張牌卡
 
-   1 + 2 = 第 1 張
-   3 + 4 = 第 2 張
+   1 + 2   = NO.01
+   3 + 4   = NO.02
    ...
-   137 + 138 = 第 69 張
+   67 + 68 = NO.34
+   ...
+   137 + 138 = NO.69
 ========================================================= */
 
 const cards = Array.from(
@@ -1211,9 +1137,9 @@ const cards = Array.from(
 );
 
 
-/* =========================================================
+/* =========================
    DOM
-========================================================= */
+========================= */
 
 const deck =
   document.getElementById("deck");
@@ -1251,14 +1177,12 @@ const modalImage =
 const modalClose =
   document.getElementById("modalClose");
 
-
-let currentCard =
-  cards[0];
+let currentCard = cards[0];
 
 
-/* =========================================================
-   建立 69 張弧形牌
-========================================================= */
+/* =========================
+   建立69張扇形牌
+========================= */
 
 function buildDeck(){
 
@@ -1269,27 +1193,20 @@ function buildDeck(){
 
   let spread;
 
-
-  if(width >= 1500){
-
+  if(width>=1500){
     spread=1120;
-
-  }else if(width >= 1200){
-
+  }
+  else if(width>=1200){
     spread=960;
-
-  }else if(width >= 900){
-
+  }
+  else if(width>=900){
     spread=820;
-
-  }else if(width >= 600){
-
+  }
+  else if(width>=600){
     spread=700;
-
-  }else{
-
+  }
+  else{
     spread=560;
-
   }
 
 
@@ -1301,22 +1218,15 @@ function buildDeck(){
 
       el.className="fan-card";
 
-      el.dataset.id =
-        card.id;
-
-
       const img =
         document.createElement("img");
 
-      img.src =
-        card.front;
+      img.src=card.front;
 
-      img.alt =
+      img.alt=
         `拾光卡 ${card.id}`;
 
-      img.loading =
-        "lazy";
-
+      img.loading="lazy";
 
       el.appendChild(img);
 
@@ -1324,23 +1234,17 @@ function buildDeck(){
 
 
       const progress =
-        index /
-        (cards.length-1);
-
+        index/(cards.length-1);
 
       const angle =
-        -43 +
-        progress*86;
-
+        -43+progress*86;
 
       const x =
-        -spread/2 +
+        -spread/2+
         spread*progress;
-
 
       const center =
         progress-.5;
-
 
       const y =
         Math.pow(
@@ -1348,14 +1252,11 @@ function buildDeck(){
           1.65
         )*155;
 
-
       const scale =
-        width < 600
-        ? .82
-        : 1;
+        width<600 ? .82 : 1;
 
 
-      el.style.transform =
+      el.style.transform=
         `
         translate(
           ${x}px,
@@ -1365,10 +1266,9 @@ function buildDeck(){
         scale(${scale})
         `;
 
-
-      el.style.zIndex =
+      el.style.zIndex=
         String(
-          100 -
+          100-
           Math.round(
             Math.abs(center)*100
           )
@@ -1391,19 +1291,16 @@ function buildDeck(){
 
     }
   );
-
 }
 
 
-/* =========================================================
+/* =========================
    顯示牌卡
-========================================================= */
+========================= */
 
 function showCard(card){
 
-  currentCard =
-    card;
-
+  currentCard=card;
 
   /*
     換牌時一定回到正面
@@ -1415,48 +1312,43 @@ function showCard(card){
 
 
   /*
-    更新正面與背面圖片
+    奇數 JPG = 正面
+    偶數 JPG = 背面
   */
 
-  frontImage.src =
+  frontImage.src=
     card.front;
 
-  backImage.src =
+  backImage.src=
     card.back;
 
-
-  /*
-    更新編號
-  */
 
   const number =
     String(card.id)
       .padStart(2,"0");
 
-
-  cardNumber.textContent =
+  cardNumber.textContent=
     `NO. ${number}`;
 
-  backCardNumber.textContent =
+  backCardNumber.textContent=
     `NO. ${number}`;
 
 
   /*
-    預先載入背面
+    預載背面
   */
 
-  const preload =
+  const preload=
     new Image();
 
-  preload.src =
+  preload.src=
     card.back;
-
 }
 
 
-/* =========================================================
-   點擊中央牌卡翻面
-========================================================= */
+/* =========================
+   翻牌
+========================= */
 
 mainCard.addEventListener(
   "click",
@@ -1470,21 +1362,20 @@ mainCard.addEventListener(
 );
 
 
-/* =========================================================
+/* =========================
    隨機抽卡
-========================================================= */
+========================= */
 
 function drawRandomCard(){
 
   let next;
 
-
   do{
 
-    next =
+    next=
       cards[
         Math.floor(
-          Math.random() *
+          Math.random()*
           cards.length
         )
       ];
@@ -1497,18 +1388,16 @@ function drawRandomCard(){
 
   showCard(next);
 
-
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
-
 }
 
 
-/* =========================================================
+/* =========================
    再抽一張
-========================================================= */
+========================= */
 
 drawAgain.addEventListener(
   "click",
@@ -1522,17 +1411,16 @@ drawAgain.addEventListener(
 );
 
 
-/* =========================================================
+/* =========================
    分享
-========================================================= */
+========================= */
 
 shareCard.addEventListener(
   "click",
   async()=>{
 
-    const text =
+    const text=
       `我抽到了「光正‧拾光卡」NO. ${String(currentCard.id).padStart(2,"0")}，69道光，陪你走一段路。`;
-
 
     const shareData={
       title:"光正‧拾光卡",
@@ -1547,17 +1435,13 @@ shareCard.addEventListener(
     ){
 
       try{
-
         await navigator.share(
           shareData
         );
-
-      }catch(error){
-
       }
+      catch(error){}
 
       return;
-
     }
 
 
@@ -1571,7 +1455,8 @@ shareCard.addEventListener(
         "牌卡連結已複製，可以分享給朋友。"
       );
 
-    }catch(error){
+    }
+    catch(error){
 
       alert(
         "請複製瀏覽器網址分享這張牌卡。"
@@ -1583,14 +1468,13 @@ shareCard.addEventListener(
 );
 
 
-/* =========================================================
-   建立 69 張圖庫
-========================================================= */
+/* =========================
+   建立圖庫
+========================= */
 
 function buildGallery(){
 
   galleryGrid.innerHTML="";
-
 
   cards.forEach(
     card=>{
@@ -1598,30 +1482,29 @@ function buildGallery(){
       const item =
         document.createElement("div");
 
-      item.className =
+      item.className=
         "gallery-item";
 
 
       const img =
         document.createElement("img");
 
-      img.src =
+      img.src=
         card.front;
 
-      img.alt =
+      img.alt=
         `拾光卡 ${card.id}`;
 
-      img.loading =
-        "lazy";
+      img.loading="lazy";
 
 
       const number =
         document.createElement("div");
 
-      number.className =
+      number.className=
         "gallery-number";
 
-      number.textContent =
+      number.textContent=
         `NO. ${String(card.id).padStart(2,"0")}`;
 
 
@@ -1634,10 +1517,10 @@ function buildGallery(){
         "click",
         ()=>{
 
-          modalImage.src =
+          modalImage.src=
             card.front;
 
-          modalImage.alt =
+          modalImage.alt=
             `拾光卡 ${card.id}`;
 
           imageModal.classList.add(
@@ -1652,13 +1535,12 @@ function buildGallery(){
 
     }
   );
-
 }
 
 
-/* =========================================================
-   關閉圖片
-========================================================= */
+/* =========================
+   Modal關閉
+========================= */
 
 modalClose.addEventListener(
   "click",
@@ -1691,17 +1573,11 @@ imageModal.addEventListener(
 );
 
 
-/* =========================================================
-   ESC
-========================================================= */
-
 document.addEventListener(
   "keydown",
   event=>{
 
-    if(
-      event.key==="Escape"
-    ){
+    if(event.key==="Escape"){
 
       imageModal.classList.remove(
         "show"
@@ -1713,9 +1589,9 @@ document.addEventListener(
 );
 
 
-/* =========================================================
+/* =========================
    初始化
-========================================================= */
+========================= */
 
 buildDeck();
 
@@ -1724,9 +1600,9 @@ buildGallery();
 showCard(cards[0]);
 
 
-/* =========================================================
+/* =========================
    RWD
-========================================================= */
+========================= */
 
 let resizeTimer;
 
@@ -1738,7 +1614,7 @@ window.addEventListener(
       resizeTimer
     );
 
-    resizeTimer =
+    resizeTimer=
       setTimeout(
         ()=>{
           buildDeck();
