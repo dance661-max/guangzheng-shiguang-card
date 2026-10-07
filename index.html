@@ -8,9 +8,9 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+/* =====================================================
+   基本設定
+===================================================== */
 
 *{
   box-sizing:border-box;
@@ -24,7 +24,7 @@ html{
 
 body{
   background:#f4eee5;
-  color:#675d53;
+  color:#62584e;
 
   font-family:
     "FangSong",
@@ -43,16 +43,16 @@ button{
 }
 
 img{
-  max-width:100%;
+  display:block;
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* =====================================================
+   上方導覽
+===================================================== */
 
 .site-header{
-  height:72px;
+  height:70px;
 
   display:flex;
   align-items:center;
@@ -60,32 +60,31 @@ img{
 
   padding:0 5vw;
 
+  background:rgba(248,244,237,.96);
+
   border-bottom:
     1px solid
-    rgba(125,108,89,.16);
-
-  background:
-    rgba(248,244,237,.92);
+    rgba(120,105,88,.16);
 
   position:relative;
-  z-index:500;
+
+  z-index:1000;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:16px;
 
-  color:#665c52;
+  gap:15px;
 }
 
 .brand-mark{
-  width:38px;
-  height:38px;
+  width:34px;
+  height:34px;
 
   border:
     2px solid
-    #75695c;
+    #6e6358;
 
   transform:rotate(45deg);
 
@@ -97,19 +96,19 @@ img{
 .brand-mark::after{
   content:"";
 
-  width:8px;
-  height:8px;
-
-  background:#75695c;
+  width:7px;
+  height:7px;
 
   border-radius:50%;
+
+  background:#6e6358;
 }
 
 .brand-text{
   display:flex;
   flex-direction:column;
 
-  line-height:1.2;
+  line-height:1.15;
 }
 
 .brand-en{
@@ -117,13 +116,13 @@ img{
     Georgia,
     serif;
 
-  font-size:12px;
+  font-size:11px;
 
   letter-spacing:.22em;
 }
 
 .brand-cn{
-  margin-top:4px;
+  margin-top:5px;
 
   font-size:14px;
 
@@ -132,8 +131,7 @@ img{
 
 .nav{
   display:flex;
-  align-items:center;
-  gap:34px;
+  gap:30px;
 }
 
 .nav button{
@@ -141,48 +139,26 @@ img{
 
   background:none;
 
-  color:#766b60;
+  color:#74695e;
 
   cursor:pointer;
-
-  padding:10px 0;
 
   font-size:14px;
 
   letter-spacing:.08em;
 
-  position:relative;
-}
-
-.nav button::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:2px;
-
-  height:1px;
-
-  background:#75695c;
-
-  transform:scaleX(0);
-
-  transition:.25s;
-}
-
-.nav button:hover::after{
-  transform:scaleX(1);
+  padding:8px 0;
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+/* =====================================================
+   首頁
+===================================================== */
 
 .hero{
-  height:calc(100svh - 72px);
+
+  height:
+    calc(100svh - 70px);
 
   min-height:650px;
 
@@ -190,106 +166,120 @@ img{
 
   position:relative;
 
-  background:
-    radial-gradient(
-      ellipse at center 50% 70%,
-      rgba(221,207,189,.48),
-      transparent 60%
-    ),
-    #f4eee5;
-
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
+  background:
+
+    radial-gradient(
+      ellipse at center 70%,
+      rgba(220,204,184,.45),
+      transparent 62%
+    ),
+
+    #f4eee5;
 }
 
 .hero-copy{
+
+  flex-shrink:0;
+
   text-align:center;
 
-  padding-top:28px;
+  padding-top:22px;
 
   position:relative;
 
-  z-index:400;
-
-  flex-shrink:0;
+  z-index:900;
 }
 
 .eyebrow{
+
   font-family:
     Georgia,
     serif;
 
-  font-size:12px;
+  font-size:11px;
 
-  letter-spacing:.32em;
+  letter-spacing:.30em;
 
-  color:#8d7d6a;
+  color:#988775;
 
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .hero-title{
-  font-size:
-    clamp(42px,5vw,70px);
 
-  line-height:1.15;
+  font-size:
+    clamp(42px,4.8vw,68px);
 
   font-weight:500;
 
-  letter-spacing:.13em;
+  line-height:1.1;
 
-  color:#62594f;
+  letter-spacing:.12em;
+
+  color:#62584e;
 }
 
 .hero-subtitle{
+
   margin-top:3px;
 
   font-size:
-    clamp(19px,2vw,27px);
+    clamp(18px,1.8vw,25px);
 
   letter-spacing:.16em;
 
-  color:#9a836d;
+  color:#9a836e;
 }
 
 .hero-description{
-  margin-top:10px;
 
-  font-size:15px;
+  margin-top:8px;
 
-  line-height:1.8;
+  font-size:14px;
 
-  color:#81766b;
+  line-height:1.7;
+
+  color:#807469;
 }
 
 
-/* =========================================================
-   69 CARD FAN
-========================================================= */
+/* =====================================================
+   69張牌的大型弧形區
+===================================================== */
 
 .deck-area{
+
+  position:relative;
+
   width:100%;
 
   flex:1;
 
   min-height:0;
 
-  position:relative;
-
   overflow:hidden;
 
-  margin-top:4px;
+  margin-top:3px;
 }
 
+
+/* 背景柔光 */
+
 .deck-glow{
+
   position:absolute;
 
   left:50%;
-  bottom:30px;
+  bottom:5px;
 
-  width:94%;
-  height:65%;
+  width:96%;
+  height:80%;
 
   transform:
     translateX(-50%);
@@ -299,28 +289,32 @@ img{
   background:
     radial-gradient(
       ellipse,
-      rgba(183,161,134,.22),
+      rgba(186,162,133,.23),
       transparent 68%
     );
 
   pointer-events:none;
 }
 
+
+/* 大弧線 */
+
 .deck-arc{
+
   position:absolute;
 
   left:50%;
-  bottom:-190px;
+  bottom:-185px;
 
-  width:94%;
-  height:410px;
+  width:96%;
+  height:390px;
 
   transform:
     translateX(-50%);
 
   border:
     1px solid
-    rgba(160,141,118,.25);
+    rgba(155,135,110,.24);
 
   border-radius:
     50% 50% 0 0;
@@ -329,21 +323,26 @@ img{
 }
 
 
-/* =========================================================
-   INDIVIDUAL CARD
-========================================================= */
+/* =====================================================
+   69張牌
+===================================================== */
 
 .fan-card{
+
   position:absolute;
 
   left:50%;
-  bottom:32px;
+  bottom:26px;
+
+  /*
+    桌機較大
+  */
 
   width:
     clamp(
-      54px,
-      4.7vw,
-      82px
+      60px,
+      5vw,
+      88px
     );
 
   aspect-ratio:2 / 3;
@@ -352,8 +351,7 @@ img{
 
   border:0;
 
-  border-radius:
-    clamp(7px, .65vw, 12px);
+  border-radius:10px;
 
   overflow:hidden;
 
@@ -363,22 +361,30 @@ img{
 
   box-shadow:
     0 7px 16px
-    rgba(67,55,44,.20);
+    rgba(66,53,42,.20);
 
   transform-origin:
-    50% 122%;
+    50% 125%;
 
   transform:
+
     translateX(
       calc(-50% + var(--x))
     )
+
     rotate(var(--rotation))
+
     translateY(var(--y));
 
   transition:
-    transform .42s cubic-bezier(.2,.8,.2,1),
-    filter .3s,
+
+    transform .4s
+    cubic-bezier(.2,.8,.2,1),
+
     opacity .3s,
+
+    filter .3s,
+
     box-shadow .3s;
 
   will-change:transform;
@@ -386,11 +392,18 @@ img{
 
 
 /*
-  原始學生作品為橫式16:9，
-  旋轉90度後變成直式牌面。
+  牌面圖片
+
+  原始圖片：
+  3840 × 2160
+  = 16:9 橫式
+
+  旋轉90度後變成：
+  9:16 直式
 */
 
 .fan-card img{
+
   position:absolute;
 
   left:50%;
@@ -412,9 +425,10 @@ img{
 }
 
 
-/* 卡片編號 */
+/* 編號 */
 
 .card-number{
+
   position:absolute;
 
   left:5px;
@@ -425,7 +439,7 @@ img{
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.90);
+    rgba(255,255,255,.9);
 
   color:#62584e;
 
@@ -435,41 +449,47 @@ img{
 
   font-size:8px;
 
-  letter-spacing:.08em;
+  line-height:1.3;
 
-  line-height:1.4;
+  letter-spacing:.08em;
 
   pointer-events:none;
 }
 
 
-/* hover */
+/* 滑鼠移上 */
 
 .fan-card:hover{
-  z-index:999 !important;
 
-  filter:brightness(1.05);
+  z-index:9999 !important;
 
   box-shadow:
     0 18px 30px
-    rgba(67,55,44,.28);
+    rgba(66,53,42,.28);
+
+  filter:brightness(1.05);
 
   transform:
+
     translateX(
       calc(-50% + var(--x))
     )
+
     rotate(var(--rotation))
+
     translateY(
       calc(var(--y) - 14px)
     )
+
     scale(1.06);
 }
 
 
-/* 點選後 */
+/* 抽牌動畫 */
 
 .deck-area.choosing
 .fan-card:not(.selected){
+
   opacity:.12;
 
   filter:blur(1px);
@@ -477,46 +497,47 @@ img{
 
 .deck-area.choosing
 .fan-card.selected{
+
   opacity:0;
 
   transform:
     translateX(-50%)
-    translateY(130px)
+    translateY(120px)
     scale(.5);
 }
 
 
-/* =========================================================
-   提示
-========================================================= */
+/* 提示 */
 
 .deck-hint{
+
   position:absolute;
 
   left:50%;
-  bottom:12px;
+  bottom:8px;
 
   transform:
     translateX(-50%);
 
-  z-index:1000;
+  z-index:10000;
+
+  font-size:13px;
+
+  letter-spacing:.08em;
 
   color:#786d62;
-
-  font-size:14px;
-
-  letter-spacing:.09em;
 
   white-space:nowrap;
 }
 
 
-/* =========================================================
-   DRAW RESULT
-========================================================= */
+/* =====================================================
+   中央結果區
+===================================================== */
 
 .result-section{
-  padding:100px 20px;
+
+  padding:90px 20px;
 
   background:#eee5d9;
 
@@ -524,36 +545,41 @@ img{
 }
 
 .result{
+
   display:none;
 
   flex-direction:column;
+
   align-items:center;
 }
 
 .result.show{
+
   display:flex;
 }
 
 .result-title{
-  margin-bottom:28px;
 
-  color:#897b6c;
+  margin-bottom:26px;
+
+  color:#88796a;
 
   font-size:14px;
 
-  letter-spacing:.14em;
+  letter-spacing:.12em;
 }
 
 
-/* =========================================================
-   CENTRAL CARD
-========================================================= */
+/* =====================================================
+   中央牌卡
+===================================================== */
 
 .card-stage{
+
   width:
     min(
       380px,
-      80vw
+      82vw
     );
 
   aspect-ratio:2 / 3;
@@ -564,6 +590,7 @@ img{
 }
 
 .card{
+
   width:100%;
   height:100%;
 
@@ -573,12 +600,18 @@ img{
 
   filter:
     drop-shadow(
-      0 24px 34px
-      rgba(74,59,44,.22)
+      0 24px 35px
+      rgba(70,56,43,.22)
     );
 }
 
+
+/*
+  真正負責翻牌的內層
+*/
+
 .card-inner{
+
   position:absolute;
 
   inset:0;
@@ -590,12 +623,20 @@ img{
     cubic-bezier(.2,.75,.2,1);
 }
 
-.card.flipped .card-inner{
+.card.flipped
+.card-inner{
+
   transform:
     rotateY(180deg);
 }
 
+
+/* =====================================================
+   正反面
+===================================================== */
+
 .face{
+
   position:absolute;
 
   inset:0;
@@ -614,88 +655,159 @@ img{
   -webkit-backface-visibility:hidden;
 }
 
+
+/* 正面 */
+
 .front{
+
   transform:
     rotateY(0deg);
 }
 
+
+/* 背面 */
+
 .back{
+
   transform:
     rotateY(180deg);
 
   background:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
 }
 
 
-/* 正面 */
+/* =====================================================
+   中央牌正面
+===================================================== */
 
 .front .card-image{
+
   position:absolute;
 
   left:50%;
   top:50%;
+
+  /*
+    16:9 原圖旋轉後
+    變成9:16
+
+    讓它滿版裁切
+  */
 
   width:177.78%;
 
-  max-width:none;
-
   height:auto;
+
+  max-width:none;
 
   transform:
     translate(-50%,-50%)
     rotate(90deg);
+
+  display:block;
 }
 
 
-/*
-  ★★★ 背面 ★★★
+/* =====================================================
+   ★★★ 中央牌背面 ★★★
 
-  使用者指定：
-  「向右旋轉90度」
+   這裡是本次最重要的修正
 
-  因此這裡明確使用：
+   原始背面：
+   3840 × 2160
+   16:9 橫式
 
-  rotate(90deg)
+   我們要：
+   1. 整張圖片完整保留
+   2. 向右旋轉90度
+   3. 變成9:16直式
+   4. 不裁切中文
+   5. 不裁切英文
 
-  不使用 -90deg
-*/
+   所以：
+
+   HEIGHT = 100%
+   WIDTH = auto
+
+   不使用cover
+   不使用177.78%
+===================================================== */
 
 .back .card-image{
+
   position:absolute;
 
   left:50%;
   top:50%;
 
-  width:150%;
+  /*
+    這裡一定是高度100%
+
+    原圖旋轉之前：
+    寬16
+    高9
+
+    高度縮放到牌卡高度3
+
+    寬度自然變成：
+    3 × 16 / 9
+
+    旋轉90度後：
+
+    寬度 = 9/16 × 3
+    高度 = 3
+
+    因此整張內容可以完整保留。
+  */
+
+  height:100%;
+
+  width:auto;
 
   max-width:none;
 
-  height:auto;
+  max-height:none;
+
+  object-fit:contain;
 
   transform:
     translate(-50%,-50%)
     rotate(90deg);
+
+  transform-origin:
+    center center;
+
+  display:block;
 }
 
 
-/* 中央編號 */
+/* =====================================================
+   中央牌編號
+===================================================== */
 
 .central-number{
+
   position:absolute;
+
+  z-index:30;
 
   top:14px;
   left:14px;
-
-  z-index:30;
 
   padding:4px 11px;
 
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.91);
+    rgba(255,255,255,.92);
 
-  color:#6c6156;
+  color:#6b6055;
 
   font-family:
     Georgia,
@@ -713,23 +825,31 @@ img{
 }
 
 
-/* =========================================================
-   RESULT CONTROLS
-========================================================= */
+/* =====================================================
+   中央提示
+===================================================== */
 
 .result-hint{
+
   margin:20px 0;
 
-  color:#887a6b;
+  color:#887a6c;
 
   font-size:14px;
 }
 
+
+/* =====================================================
+   按鈕
+===================================================== */
+
 .controls{
+
   display:flex;
 
-  align-items:center;
   justify-content:center;
+
+  align-items:center;
 
   gap:12px;
 
@@ -738,10 +858,11 @@ img{
 
 .btn-primary,
 .btn-secondary{
-  border-radius:999px;
 
   padding:
     10px 25px;
+
+  border-radius:999px;
 
   cursor:pointer;
 
@@ -749,22 +870,25 @@ img{
 }
 
 .btn-primary{
-  border:
-    1px solid #968573;
 
-  background:#95816c;
+  border:
+    1px solid #968473;
+
+  background:#95816d;
 
   color:#fff;
 }
 
 .btn-primary:hover{
-  background:#766554;
+
+  background:#756453;
 
   transform:
     translateY(-2px);
 }
 
 .btn-secondary{
+
   border:
     1px solid #b3a391;
 
@@ -775,6 +899,7 @@ img{
 }
 
 .btn-secondary:hover{
+
   background:#fff;
 
   transform:
@@ -782,11 +907,12 @@ img{
 }
 
 
-/* =========================================================
-   MESSAGE
-========================================================= */
+/* =====================================================
+   背面文字提示
+===================================================== */
 
 .message{
+
   width:
     min(
       620px,
@@ -795,7 +921,7 @@ img{
 
   margin:28px auto 0;
 
-  padding:23px;
+  padding:22px;
 
   border:
     1px solid
@@ -804,7 +930,7 @@ img{
   border-radius:18px;
 
   background:
-    rgba(255,255,255,.58);
+    rgba(255,255,255,.6);
 
   color:#716458;
 
@@ -812,27 +938,32 @@ img{
 }
 
 .message.hidden{
+
   display:none;
 }
 
 
-/* =========================================================
-   GALLERY
-========================================================= */
+/* =====================================================
+   藝廊
+===================================================== */
 
 .gallery-section{
-  padding:100px 5vw;
+
+  padding:
+    95px 5vw;
 
   background:#f7f2eb;
 }
 
 .section-heading{
+
   text-align:center;
 
-  margin-bottom:45px;
+  margin-bottom:42px;
 }
 
 .section-small{
+
   font-family:
     Georgia,
     serif;
@@ -847,7 +978,8 @@ img{
 }
 
 .section-heading h2{
-  font-size:35px;
+
+  font-size:34px;
 
   font-weight:500;
 
@@ -857,14 +989,16 @@ img{
 }
 
 .section-heading p{
-  margin-top:10px;
+
+  margin-top:8px;
 
   color:#887b6e;
 
-  font-size:15px;
+  font-size:14px;
 }
 
 .gallery{
+
   max-width:1250px;
 
   margin:auto;
@@ -878,6 +1012,7 @@ img{
 }
 
 .gallery-card{
+
   position:relative;
 
   border:0;
@@ -894,12 +1029,13 @@ img{
 
   box-shadow:
     0 4px 12px
-    rgba(70,55,40,.10);
+    rgba(70,55,40,.1);
 
   transition:.25s;
 }
 
 .gallery-card:hover{
+
   transform:
     translateY(-5px);
 
@@ -909,7 +1045,6 @@ img{
 }
 
 .gallery-card img{
-  display:block;
 
   width:100%;
 
@@ -921,6 +1056,7 @@ img{
 }
 
 .gallery-no{
+
   position:absolute;
 
   left:6px;
@@ -931,7 +1067,7 @@ img{
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.87);
+    rgba(255,255,255,.88);
 
   font-family:
     Georgia,
@@ -943,12 +1079,14 @@ img{
 }
 
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* =====================================================
+   關於
+===================================================== */
 
 .about-section{
-  padding:100px 20px;
+
+  padding:
+    95px 20px;
 
   background:#e9dfd2;
 
@@ -956,6 +1094,7 @@ img{
 }
 
 .about{
+
   max-width:760px;
 
   margin:auto;
@@ -966,12 +1105,14 @@ img{
 }
 
 .about p{
+
   margin-bottom:18px;
 }
 
 .about-highlight{
+
   margin:
-    35px auto;
+    34px auto;
 
   padding:
     25px 20px;
@@ -990,12 +1131,14 @@ img{
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer{
-  padding:40px 20px;
+
+  padding:
+    38px 20px;
 
   background:#62594f;
 
@@ -1005,6 +1148,7 @@ footer{
 }
 
 footer strong{
+
   display:block;
 
   margin-bottom:7px;
@@ -1015,17 +1159,19 @@ footer strong{
 }
 
 footer span{
+
   opacity:.72;
 
   font-size:12px;
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* =====================================================
+   Toast
+===================================================== */
 
 .toast{
+
   position:fixed;
 
   left:50%;
@@ -1055,6 +1201,7 @@ footer span{
 }
 
 .toast.show{
+
   opacity:1;
 
   transform:
@@ -1062,38 +1209,42 @@ footer span{
 }
 
 
-/* =========================================================
-   TABLET
-========================================================= */
+/* =====================================================
+   平板
+===================================================== */
 
 @media(max-width:1000px){
 
-  .site-header{
-    padding:0 25px;
-  }
-
   .nav{
-    gap:18px;
+    gap:16px;
   }
 
   .fan-card{
-    width:58px;
+
+    width:
+      clamp(
+        48px,
+        6vw,
+        68px
+      );
   }
 
   .gallery{
+
     grid-template-columns:
       repeat(5,1fr);
   }
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =====================================================
+   手機
+===================================================== */
 
 @media(max-width:650px){
 
   .site-header{
+
     height:62px;
 
     padding:
@@ -1101,60 +1252,68 @@ footer span{
   }
 
   .brand-mark{
-    width:29px;
-    height:29px;
+
+    width:28px;
+    height:28px;
   }
 
   .brand-en{
-    font-size:8px;
+
+    font-size:7px;
   }
 
   .brand-cn{
-    font-size:11px;
+
+    font-size:10px;
   }
 
   .nav{
-    gap:9px;
+
+    gap:10px;
   }
 
   .nav button{
+
     font-size:10px;
   }
 
   .hero{
+
     height:
       calc(100svh - 62px);
 
-    min-height:560px;
+    min-height:570px;
   }
 
   .hero-copy{
-    padding-top:20px;
+
+    padding-top:18px;
   }
 
   .hero-title{
-    font-size:35px;
+
+    font-size:34px;
   }
 
   .hero-subtitle{
+
     font-size:17px;
   }
 
   .hero-description{
-    font-size:12px;
-  }
 
-  .deck-area{
-    margin-top:0;
+    font-size:11px;
   }
 
   .fan-card{
-    width:45px;
+
+    width:43px;
 
     border-radius:7px;
   }
 
   .card-number{
+
     font-size:6px;
 
     left:3px;
@@ -1162,51 +1321,63 @@ footer span{
   }
 
   .deck-hint{
-    font-size:11px;
 
-    bottom:8px;
+    font-size:10px;
+
+    bottom:7px;
+  }
+
+  .card-stage{
+
+    width:84vw;
+
+    max-width:360px;
   }
 
   .gallery{
+
     grid-template-columns:
       repeat(3,1fr);
 
     gap:8px;
   }
-
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+/* =====================================================
+   很小的手機
+===================================================== */
 
 @media(max-width:420px){
 
   .nav button:nth-child(3){
+
     display:none;
   }
 
   .hero-title{
-    font-size:31px;
+
+    font-size:30px;
   }
 
   .fan-card{
-    width:40px;
+
+    width:39px;
   }
 
 }
 
 
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
+/* =====================================================
+   減少動畫
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
   *,
   *::before,
   *::after{
+
     animation:none!important;
 
     transition:none!important;
@@ -1223,9 +1394,9 @@ footer span{
 <body>
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- =====================================================
+     導覽列
+===================================================== -->
 
 <header class="site-header">
 
@@ -1268,9 +1439,9 @@ footer span{
 
 
 
-<!-- =========================================================
-     HOME
-========================================================= -->
+<!-- =====================================================
+     首頁
+===================================================== -->
 
 <main id="home">
 
@@ -1299,10 +1470,9 @@ footer span{
   </div>
 
 
-
-  <!-- =======================================================
-       69張牌
-  ======================================================== -->
+  <!-- ===================================================
+       69張牌全部在這裡建立
+  ==================================================== -->
 
   <div
     class="deck-area"
@@ -1316,7 +1486,9 @@ footer span{
 
 
   <div class="deck-hint">
+
     點擊一張牌，讓直覺替你選擇今天的拾光。
+
   </div>
 
 
@@ -1326,9 +1498,9 @@ footer span{
 
 
 
-<!-- =========================================================
-     RESULT
-========================================================= -->
+<!-- =====================================================
+     抽到的牌
+===================================================== -->
 
 <section class="result-section">
 
@@ -1338,7 +1510,9 @@ footer span{
 
 
     <div class="result-title">
+
       你今天遇見的，是這一道光。
+
     </div>
 
 
@@ -1372,7 +1546,7 @@ footer span{
             <img
               id="backImage"
               class="card-image"
-              alt="拾光卡背面文字">
+              alt="拾光卡背面">
 
           </div>
 
@@ -1440,9 +1614,9 @@ footer span{
 
 
 
-<!-- =========================================================
-     GALLERY
-========================================================= -->
+<!-- =====================================================
+     69張藝廊
+===================================================== -->
 
 <section
   class="gallery-section"
@@ -1476,9 +1650,9 @@ footer span{
 
 
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
+<!-- =====================================================
+     關於
+===================================================== -->
 
 <section
   class="about-section"
@@ -1510,12 +1684,14 @@ footer span{
       將生活裡熟悉的風景，轉化成一張張獨具特色的牌卡。
     </p>
 
+
     <div class="about-highlight">
 
       69道光，不一定能回答所有問題。<br>
       但也許，其中有一句話，剛好可以陪你一下。
 
     </div>
+
 
     <p>
       抽一張牌，停一下。<br>
@@ -1529,9 +1705,9 @@ footer span{
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      FOOTER
-========================================================= -->
+===================================================== -->
 
 <footer>
 
@@ -1556,17 +1732,14 @@ footer span{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    69張牌
-=========================================================
 
-   1.jpg  + 2.jpg   = NO.01
-   3.jpg  + 4.jpg   = NO.02
-   5.jpg  + 6.jpg   = NO.03
+   1.jpg + 2.jpg = NO.01
+   3.jpg + 4.jpg = NO.02
    ...
    137.jpg + 138.jpg = NO.69
-
-========================================================= */
+===================================================== */
 
 const cards =
   Array.from(
@@ -1595,23 +1768,20 @@ const $ =
   document.getElementById(id);
 
 
-/* =========================================================
-   頁面捲動
-========================================================= */
+/* =====================================================
+   導覽
+===================================================== */
 
 function goTo(id){
 
-  const element =
+  const target =
     $(id);
 
-  if(element){
+  if(target){
 
-    element.scrollIntoView({
-
+    target.scrollIntoView({
       behavior:"smooth",
-
       block:"start"
-
     });
 
   }
@@ -1619,9 +1789,9 @@ function goTo(id){
 }
 
 
-/* =========================================================
-   建立69張完整弧形牌陣
-========================================================= */
+/* =====================================================
+   建立69張完整牌陣
+===================================================== */
 
 function buildDeck(){
 
@@ -1630,131 +1800,126 @@ function buildDeck(){
 
 
   /*
-    清空原本牌卡
+    清除舊牌
   */
 
   area
     .querySelectorAll(".fan-card")
     .forEach(
-      card => card.remove()
+      card =>
+      card.remove()
     );
-
-
-  /*
-    69張全部使用
-
-    不抽22張。
-
-    每一張都是實際存在的
-    1.jpg ~ 137.jpg奇數檔。
-  */
 
 
   const total =
     cards.length;
 
 
-  const width =
+  const viewport =
     window.innerWidth;
 
 
   /*
+    ★★★
+    69張全部橫向分布
+
+    不是只取22張。
+
     桌機：
+    牌陣很寬
 
-    牌陣非常寬，
-    讓69張牌大量重疊。
-
-    手機：
-
-    自動縮小。
+    每張牌有大量重疊，
+    但仍然可以看到69張。
   */
 
   let spread;
 
 
-  if(width >= 1400){
+  if(viewport >= 1500){
 
-    spread =
-      Math.min(
-        width * .44,
-        830
-      );
+    spread = 820;
 
-  }else if(width >= 1000){
+  }else if(viewport >= 1200){
 
-    spread =
-      width * .43;
+    spread = 690;
 
-  }else if(width >= 650){
+  }else if(viewport >= 900){
 
-    spread =
-      width * .43;
+    spread = 560;
+
+  }else if(viewport >= 650){
+
+    spread = 440;
 
   }else{
 
-    spread =
-      width * .45;
+    spread = 260;
 
   }
 
-
-  /*
-    每張牌建立
-  */
 
   cards.forEach(
     (card,index)=>{
 
 
-      const progress =
+      /*
+        0 ~ 1
+      */
+
+      const p =
         index /
         (total - 1);
 
 
       /*
-        -48° 到 +48°
+        角度：
 
-        形成比較漂亮的大弧線
+        左側 -43°
+        中央 0°
+        右側 +43°
       */
 
       const rotation =
-        -48 +
-        progress * 96;
+        -43 +
+        p * 86;
 
 
       /*
         水平位置
 
-        69張牌全部分布在
-        整個大弧線上。
+        69張全部使用。
       */
 
       const x =
         -spread +
-        progress *
+        p *
         spread *
         2;
 
 
       /*
-        中央最高，
-        左右逐漸降低。
+        弧線高度
 
-        用平方讓弧線更自然。
+        中間高
+        左右低
       */
 
       const distance =
         Math.abs(
-          progress - .5
+          p - .5
         );
 
 
       const y =
         Math.pow(
           distance,
-          1.72
-        ) * 145;
+          1.7
+        ) * 150;
 
+
+      /*
+        建立牌
+      */
 
       const element =
         document.createElement(
@@ -1789,14 +1954,12 @@ function buildDeck(){
 
 
       /*
-        後面的牌層次稍高，
-        但每張牌仍保留可點擊區域。
+        後建立的牌在上面，
+        但每一張仍然存在。
       */
 
       element.style.zIndex =
-        String(
-          100 + index
-        );
+        100 + index;
 
 
       element.innerHTML = `
@@ -1835,9 +1998,9 @@ function buildDeck(){
 }
 
 
-/* =========================================================
-   選牌
-========================================================= */
+/* =====================================================
+   點選牌卡
+===================================================== */
 
 function selectCard(
   card,
@@ -1852,10 +2015,6 @@ function selectCard(
     false;
 
 
-  /*
-    整個牌陣淡出
-  */
-
   $("deckArea")
     .classList.add(
       "choosing"
@@ -1866,10 +2025,6 @@ function selectCard(
     "selected"
   );
 
-
-  /*
-    稍微等待牌離開牌陣
-  */
 
   setTimeout(
     ()=>{
@@ -1885,9 +2040,9 @@ function selectCard(
 }
 
 
-/* =========================================================
+/* =====================================================
    顯示中央牌
-========================================================= */
+===================================================== */
 
 function showCard(card){
 
@@ -1935,20 +2090,13 @@ function showCard(card){
     );
 
 
-  /*
-    自動移動到中央牌
-  */
-
   setTimeout(
     ()=>{
 
       $("result")
         .scrollIntoView({
-
           behavior:"smooth",
-
           block:"center"
-
         });
 
     },
@@ -1958,9 +2106,9 @@ function showCard(card){
 }
 
 
-/* =========================================================
+/* =====================================================
    翻牌
-========================================================= */
+===================================================== */
 
 function flipCard(){
 
@@ -2013,9 +2161,9 @@ function flipCard(){
 }
 
 
-/* =========================================================
+/* =====================================================
    再抽一張
-========================================================= */
+===================================================== */
 
 function newDraw(){
 
@@ -2033,19 +2181,8 @@ function newDraw(){
     );
 
 
-  /*
-    重建69張完整牌陣
-
-    每次順序仍然是69張，
-    只是重新排列角度與位置。
-  */
-
   buildDeck();
 
-
-  /*
-    回到首頁
-  */
 
   window.scrollTo({
 
@@ -2058,9 +2195,9 @@ function newDraw(){
 }
 
 
-/* =========================================================
-   藝廊
-========================================================= */
+/* =====================================================
+   建立藝廊
+===================================================== */
 
 function buildGallery(){
 
@@ -2075,8 +2212,7 @@ function buildGallery(){
 
         <button
           class="gallery-card"
-          onclick="galleryChoose(${card.id})"
-        >
+          onclick="galleryChoose(${card.id})">
 
           <img
             loading="lazy"
@@ -2097,9 +2233,9 @@ function buildGallery(){
 }
 
 
-/* =========================================================
-   從藝廊選牌
-========================================================= */
+/* =====================================================
+   藝廊選牌
+===================================================== */
 
 function galleryChoose(id){
 
@@ -2115,22 +2251,12 @@ function galleryChoose(id){
     card
   );
 
-
-  $("result")
-    .scrollIntoView({
-
-      behavior:"smooth",
-
-      block:"center"
-
-    });
-
 }
 
 
-/* =========================================================
+/* =====================================================
    分享
-========================================================= */
+===================================================== */
 
 async function shareCard(){
 
@@ -2141,7 +2267,6 @@ async function shareCard(){
     );
 
     return;
-
   }
 
 
@@ -2171,7 +2296,7 @@ async function shareCard(){
 
     }catch(error){
 
-      /* 使用者取消分享時不顯示錯誤 */
+      /* 使用者取消分享 */
 
     }
 
@@ -2202,9 +2327,9 @@ async function shareCard(){
 }
 
 
-/* =========================================================
+/* =====================================================
    Toast
-========================================================= */
+===================================================== */
 
 let toastTimer;
 
@@ -2244,20 +2369,18 @@ function showToast(text){
 }
 
 
-/* =========================================================
+/* =====================================================
    啟動
-========================================================= */
+===================================================== */
 
 buildDeck();
 
 buildGallery();
 
 
-/* =========================================================
-   螢幕尺寸變化
-
-   只有尚未抽牌時重新排列。
-========================================================= */
+/* =====================================================
+   螢幕尺寸改變
+===================================================== */
 
 let resizeTimer;
 
@@ -2275,9 +2398,7 @@ window.addEventListener(
       setTimeout(
         ()=>{
 
-          if(
-            !selectedCard
-          ){
+          if(!selectedCard){
 
             buildDeck();
 
