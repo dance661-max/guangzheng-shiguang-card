@@ -51,11 +51,14 @@
 
 /* 正面：把原本橫式作品旋轉成直式 */
 .front img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  position:absolute;
+  width:177.78%;
+  height:auto;
+  max-width:none;
+  left:50%;
+  top:50%;
   display:block;
-  transform:rotate(90deg) scale(1.335);
+  transform:translate(-50%,-50%) rotate(90deg);
 }
 
 /* 背面 */
@@ -69,11 +72,14 @@
 
 /* 偶數檔案：同樣旋轉 90°，讓文字轉正 */
 .back img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  position:absolute;
+  width:177.78%;
+  height:auto;
+  max-width:none;
+  left:50%;
+  top:50%;
   display:block;
-  transform:rotate(90deg) scale(1.335);
+  transform:translate(-50%,-50%) rotate(90deg);
 }
 
 /* 藝廊也改成直式 */
