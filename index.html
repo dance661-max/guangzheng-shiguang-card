@@ -68,7 +68,7 @@
 </div>
 <div class="toast" id="toast">已複製分享連結</div>
 <script>
-const cards=Array.front:`${i*2+1}.jpg`,back:`${i*2+2}.jpg`}));
+const cards=Array.from({length:69},(_,i)=>({id:i+1,front:`cards/${i*2+1}.jpg`,back:`cards/${i*2+2}.jpg`}));
 let selected=null,flipped=false;
 const $=id=>document.getElementById(id);
 function scrollToId(id){$(id).scrollIntoView({behavior:'smooth'})}
