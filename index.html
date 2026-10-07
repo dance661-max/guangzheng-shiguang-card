@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>光正‧拾光卡｜69道光，陪你走一段路。</title>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  光正‧拾光卡｜69道光，陪你走一段路。
+</title>
+
 
 <style>
 
 /* =====================================================
-   基本設定
+   RESET
 ===================================================== */
 
 *{
@@ -23,7 +31,9 @@ html{
 }
 
 body{
+
   background:#f4eee5;
+
   color:#62584e;
 
   font-family:
@@ -48,19 +58,23 @@ img{
 
 
 /* =====================================================
-   上方導覽
+   HEADER
 ===================================================== */
 
 .site-header{
+
   height:70px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   padding:0 5vw;
 
-  background:rgba(248,244,237,.96);
+  background:
+    rgba(248,244,237,.96);
 
   border-bottom:
     1px solid
@@ -72,14 +86,18 @@ img{
 }
 
 .brand{
+
   display:flex;
+
   align-items:center;
 
   gap:15px;
 }
 
 .brand-mark{
+
   width:34px;
+
   height:34px;
 
   border:
@@ -89,14 +107,18 @@ img{
   transform:rotate(45deg);
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 }
 
 .brand-mark::after{
+
   content:"";
 
   width:7px;
+
   height:7px;
 
   border-radius:50%;
@@ -105,13 +127,16 @@ img{
 }
 
 .brand-text{
+
   display:flex;
+
   flex-direction:column;
 
   line-height:1.15;
 }
 
 .brand-en{
+
   font-family:
     Georgia,
     serif;
@@ -122,6 +147,7 @@ img{
 }
 
 .brand-cn{
+
   margin-top:5px;
 
   font-size:14px;
@@ -130,11 +156,14 @@ img{
 }
 
 .nav{
+
   display:flex;
+
   gap:30px;
 }
 
 .nav button{
+
   border:0;
 
   background:none;
@@ -152,7 +181,7 @@ img{
 
 
 /* =====================================================
-   首頁
+   HERO
 ===================================================== */
 
 .hero{
@@ -268,17 +297,16 @@ img{
   margin-top:3px;
 }
 
-
-/* 背景柔光 */
-
 .deck-glow{
 
   position:absolute;
 
   left:50%;
+
   bottom:5px;
 
   width:96%;
+
   height:80%;
 
   transform:
@@ -296,17 +324,16 @@ img{
   pointer-events:none;
 }
 
-
-/* 大弧線 */
-
 .deck-arc{
 
   position:absolute;
 
   left:50%;
+
   bottom:-185px;
 
   width:96%;
+
   height:390px;
 
   transform:
@@ -332,11 +359,8 @@ img{
   position:absolute;
 
   left:50%;
-  bottom:26px;
 
-  /*
-    桌機較大
-  */
+  bottom:26px;
 
   width:
     clamp(
@@ -391,22 +415,25 @@ img{
 }
 
 
-/*
-  牌面圖片
+/* =====================================================
+   弧形牌陣中的學生作品
 
-  原始圖片：
-  3840 × 2160
-  = 16:9 橫式
+   奇數 JPG：
+   1.jpg
+   3.jpg
+   5.jpg
+   ...
 
-  旋轉90度後變成：
-  9:16 直式
-*/
+   原始圖片為16:9橫式，
+   因此旋轉90度變成直式牌面。
+===================================================== */
 
 .fan-card img{
 
   position:absolute;
 
   left:50%;
+
   top:50%;
 
   width:177.78%;
@@ -432,6 +459,7 @@ img{
   position:absolute;
 
   left:5px;
+
   bottom:5px;
 
   padding:1px 6px;
@@ -457,7 +485,7 @@ img{
 }
 
 
-/* 滑鼠移上 */
+/* Hover */
 
 .fan-card:hover{
 
@@ -514,6 +542,7 @@ img{
   position:absolute;
 
   left:50%;
+
   bottom:8px;
 
   transform:
@@ -532,7 +561,7 @@ img{
 
 
 /* =====================================================
-   中央結果區
+   RESULT
 ===================================================== */
 
 .result-section{
@@ -571,7 +600,7 @@ img{
 
 
 /* =====================================================
-   中央牌卡
+   CENTRAL CARD
 ===================================================== */
 
 .card-stage{
@@ -592,6 +621,7 @@ img{
 .card{
 
   width:100%;
+
   height:100%;
 
   position:relative;
@@ -606,9 +636,9 @@ img{
 }
 
 
-/*
-  真正負責翻牌的內層
-*/
+/* =====================================================
+   3D翻牌內層
+===================================================== */
 
 .card-inner{
 
@@ -642,6 +672,7 @@ img{
   inset:0;
 
   width:100%;
+
   height:100%;
 
   overflow:hidden;
@@ -679,6 +710,8 @@ img{
   align-items:center;
 
   justify-content:center;
+
+  overflow:hidden;
 }
 
 
@@ -691,14 +724,8 @@ img{
   position:absolute;
 
   left:50%;
+
   top:50%;
-
-  /*
-    16:9 原圖旋轉後
-    變成9:16
-
-    讓它滿版裁切
-  */
 
   width:177.78%;
 
@@ -717,26 +744,35 @@ img{
 /* =====================================================
    ★★★ 中央牌背面 ★★★
 
-   這裡是本次最重要的修正
+   這是本次最重要的修正。
 
-   原始背面：
-   3840 × 2160
-   16:9 橫式
+   偶數 JPG：
+   2.jpg
+   4.jpg
+   6.jpg
+   ...
 
-   我們要：
-   1. 整張圖片完整保留
-   2. 向右旋轉90度
-   3. 變成9:16直式
-   4. 不裁切中文
-   5. 不裁切英文
+   原始檔是橫式文字設計。
 
-   所以：
+   注意：
+   原始檔裡的中文與英文方向
+   已經帶有旋轉。
 
-   HEIGHT = 100%
-   WIDTH = auto
+   因此不能再使用前一版的
+   rotate(90deg)。
 
-   不使用cover
-   不使用177.78%
+   本版：
+   rotate(-90deg)
+
+   也就是向左90度。
+
+   這樣圖片旋轉後，
+   中文與英文會變成正常直式閱讀。
+
+   同時：
+   object-fit:contain
+
+   確保整張背面完整呈現。
 ===================================================== */
 
 .back .card-image{
@@ -744,31 +780,18 @@ img{
   position:absolute;
 
   left:50%;
+
   top:50%;
 
   /*
-    這裡一定是高度100%
+    用牌卡高度作為主要基準。
 
-    原圖旋轉之前：
-    寬16
-    高9
-
-    高度縮放到牌卡高度3
-
-    寬度自然變成：
-    3 × 16 / 9
-
-    旋轉90度後：
-
-    寬度 = 9/16 × 3
-    高度 = 3
-
-    因此整張內容可以完整保留。
+    圖片完整保留。
   */
 
-  height:100%;
+  width:150%;
 
-  width:auto;
+  height:auto;
 
   max-width:none;
 
@@ -776,9 +799,17 @@ img{
 
   object-fit:contain;
 
+  /*
+    ★★★ 最重要 ★★★
+
+    偶數圖片向左旋轉90度。
+
+    不是右90度。
+  */
+
   transform:
     translate(-50%,-50%)
-    rotate(90deg);
+    rotate(-90deg);
 
   transform-origin:
     center center;
@@ -798,6 +829,7 @@ img{
   z-index:30;
 
   top:14px;
+
   left:14px;
 
   padding:4px 11px;
@@ -826,7 +858,7 @@ img{
 
 
 /* =====================================================
-   中央提示
+   RESULT HINT
 ===================================================== */
 
 .result-hint{
@@ -840,7 +872,7 @@ img{
 
 
 /* =====================================================
-   按鈕
+   BUTTONS
 ===================================================== */
 
 .controls{
@@ -908,7 +940,7 @@ img{
 
 
 /* =====================================================
-   背面文字提示
+   MESSAGE
 ===================================================== */
 
 .message{
@@ -944,7 +976,7 @@ img{
 
 
 /* =====================================================
-   藝廊
+   GALLERY
 ===================================================== */
 
 .gallery-section{
@@ -1060,6 +1092,7 @@ img{
   position:absolute;
 
   left:6px;
+
   bottom:6px;
 
   padding:2px 7px;
@@ -1080,7 +1113,7 @@ img{
 
 
 /* =====================================================
-   關於
+   ABOUT
 ===================================================== */
 
 .about-section{
@@ -1167,7 +1200,7 @@ footer span{
 
 
 /* =====================================================
-   Toast
+   TOAST
 ===================================================== */
 
 .toast{
@@ -1175,6 +1208,7 @@ footer span{
   position:fixed;
 
   left:50%;
+
   bottom:30px;
 
   z-index:9999;
@@ -1210,12 +1244,13 @@ footer span{
 
 
 /* =====================================================
-   平板
+   TABLET
 ===================================================== */
 
 @media(max-width:1000px){
 
   .nav{
+
     gap:16px;
   }
 
@@ -1234,11 +1269,12 @@ footer span{
     grid-template-columns:
       repeat(5,1fr);
   }
+
 }
 
 
 /* =====================================================
-   手機
+   MOBILE
 ===================================================== */
 
 @media(max-width:650px){
@@ -1254,6 +1290,7 @@ footer span{
   .brand-mark{
 
     width:28px;
+
     height:28px;
   }
 
@@ -1317,6 +1354,7 @@ footer span{
     font-size:6px;
 
     left:3px;
+
     bottom:3px;
   }
 
@@ -1341,11 +1379,12 @@ footer span{
 
     gap:8px;
   }
+
 }
 
 
 /* =====================================================
-   很小的手機
+   小手機
 ===================================================== */
 
 @media(max-width:420px){
@@ -1395,7 +1434,7 @@ footer span{
 
 
 <!-- =====================================================
-     導覽列
+     HEADER
 ===================================================== -->
 
 <header class="site-header">
@@ -1440,7 +1479,7 @@ footer span{
 
 
 <!-- =====================================================
-     首頁
+     HOME
 ===================================================== -->
 
 <main id="home">
@@ -1463,16 +1502,15 @@ footer span{
     </div>
 
     <div class="hero-description">
+
       有時候，我們需要的不是答案，<br>
+
       只是剛好遇見一句，想送給自己的話。
+
     </div>
 
   </div>
 
-
-  <!-- ===================================================
-       69張牌全部在這裡建立
-  ==================================================== -->
 
   <div
     class="deck-area"
@@ -1499,7 +1537,7 @@ footer span{
 
 
 <!-- =====================================================
-     抽到的牌
+     RESULT
 ===================================================== -->
 
 <section class="result-section">
@@ -1615,7 +1653,7 @@ footer span{
 
 
 <!-- =====================================================
-     69張藝廊
+     GALLERY
 ===================================================== -->
 
 <section
@@ -1651,7 +1689,7 @@ footer span{
 
 
 <!-- =====================================================
-     關於
+     ABOUT
 ===================================================== -->
 
 <section
@@ -1688,6 +1726,7 @@ footer span{
     <div class="about-highlight">
 
       69道光，不一定能回答所有問題。<br>
+
       但也許，其中有一句話，剛好可以陪你一下。
 
     </div>
@@ -1695,6 +1734,7 @@ footer span{
 
     <p>
       抽一張牌，停一下。<br>
+
       看看今天的自己，也看看正在發光的你。
     </p>
 
@@ -1735,10 +1775,10 @@ footer span{
 /* =====================================================
    69張牌
 
-   1.jpg + 2.jpg = NO.01
-   3.jpg + 4.jpg = NO.02
+   1 + 2 = NO.01
+   3 + 4 = NO.02
    ...
-   137.jpg + 138.jpg = NO.69
+   137 + 138 = NO.69
 ===================================================== */
 
 const cards =
@@ -1780,8 +1820,11 @@ function goTo(id){
   if(target){
 
     target.scrollIntoView({
+
       behavior:"smooth",
+
       block:"start"
+
     });
 
   }
@@ -1790,7 +1833,7 @@ function goTo(id){
 
 
 /* =====================================================
-   建立69張完整牌陣
+   建立69張完整弧形牌陣
 ===================================================== */
 
 function buildDeck(){
@@ -1798,10 +1841,6 @@ function buildDeck(){
   const area =
     $("deckArea");
 
-
-  /*
-    清除舊牌
-  */
 
   area
     .querySelectorAll(".fan-card")
@@ -1819,19 +1858,6 @@ function buildDeck(){
     window.innerWidth;
 
 
-  /*
-    ★★★
-    69張全部橫向分布
-
-    不是只取22張。
-
-    桌機：
-    牌陣很寬
-
-    每張牌有大量重疊，
-    但仍然可以看到69張。
-  */
-
   let spread;
 
 
@@ -1839,19 +1865,23 @@ function buildDeck(){
 
     spread = 820;
 
-  }else if(viewport >= 1200){
+  }
+  else if(viewport >= 1200){
 
     spread = 690;
 
-  }else if(viewport >= 900){
+  }
+  else if(viewport >= 900){
 
     spread = 560;
 
-  }else if(viewport >= 650){
+  }
+  else if(viewport >= 650){
 
     spread = 440;
 
-  }else{
+  }
+  else{
 
     spread = 260;
 
@@ -1862,21 +1892,15 @@ function buildDeck(){
     (card,index)=>{
 
 
-      /*
-        0 ~ 1
-      */
-
       const p =
         index /
         (total - 1);
 
 
       /*
-        角度：
-
-        左側 -43°
-        中央 0°
-        右側 +43°
+        左 -43°
+        中 0°
+        右 +43°
       */
 
       const rotation =
@@ -1885,9 +1909,7 @@ function buildDeck(){
 
 
       /*
-        水平位置
-
-        69張全部使用。
+        69張全部橫向分布
       */
 
       const x =
@@ -1898,9 +1920,7 @@ function buildDeck(){
 
 
       /*
-        弧線高度
-
-        中間高
+        中央高、
         左右低
       */
 
@@ -1916,10 +1936,6 @@ function buildDeck(){
           1.7
         ) * 150;
 
-
-      /*
-        建立牌
-      */
 
       const element =
         document.createElement(
@@ -1953,11 +1969,6 @@ function buildDeck(){
       );
 
 
-      /*
-        後建立的牌在上面，
-        但每一張仍然存在。
-      */
-
       element.style.zIndex =
         100 + index;
 
@@ -1980,10 +1991,12 @@ function buildDeck(){
       element.addEventListener(
         "click",
         ()=>{
+
           selectCard(
             card,
             element
           );
+
         }
       );
 
@@ -1999,7 +2012,7 @@ function buildDeck(){
 
 
 /* =====================================================
-   點選牌卡
+   選牌
 ===================================================== */
 
 function selectCard(
@@ -2060,9 +2073,22 @@ function showCard(card){
     );
 
 
+  /*
+    奇數：
+    正面作品
+  */
+
   $("frontImage").src =
     card.front;
 
+
+  /*
+    偶數：
+    背面文字
+
+    ★ 不再另外用JS旋轉圖片。
+    CSS 統一處理方向。
+  */
 
   $("backImage").src =
     card.back;
@@ -2095,8 +2121,11 @@ function showCard(card){
 
       $("result")
         .scrollIntoView({
+
           behavior:"smooth",
+
           block:"center"
+
         });
 
     },
@@ -2138,7 +2167,8 @@ function flipCard(){
         "hidden"
       );
 
-  }else{
+  }
+  else{
 
     $("mainCard")
       .classList.remove(
@@ -2267,6 +2297,7 @@ async function shareCard(){
     );
 
     return;
+
   }
 
 
@@ -2294,13 +2325,15 @@ async function shareCard(){
 
       });
 
-    }catch(error){
+    }
+    catch(error){
 
       /* 使用者取消分享 */
 
     }
 
-  }else{
+  }
+  else{
 
     try{
 
@@ -2314,7 +2347,8 @@ async function shareCard(){
         "網站網址已複製。"
       );
 
-    }catch(error){
+    }
+    catch(error){
 
       showToast(
         "請複製瀏覽器網址分享。"
@@ -2379,7 +2413,7 @@ buildGallery();
 
 
 /* =====================================================
-   螢幕尺寸改變
+   視窗大小改變
 ===================================================== */
 
 let resizeTimer;
